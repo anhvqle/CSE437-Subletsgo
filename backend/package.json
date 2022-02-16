@@ -1,0 +1,26 @@
+{
+  "name": "subletsgo-backend",
+  "version": "1.0.0",
+  "description": "backend api for subletsgo",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anhvqle/CSE437-Subletsgo.git"
+  },
+  "keywords": [
+    "CSE437"
+  ],
+  "author": "Anh Le, Kien Ta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anhvqle/CSE437-Subletsgo/issues"
+  },
+  "homepage": "https://github.com/anhvqle/CSE437-Subletsgo#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "sequelize": "^6.16.1"
+  }
+}
