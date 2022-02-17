@@ -1,5 +1,6 @@
 import AuthNavigationBar from "../AuthNavBar";
 import { useState } from "react";
+import signup from "../../data/signupUser";
 
 function Signup() {
     const [firstName, setFirstName] = useState("");
@@ -7,8 +8,8 @@ function Signup() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleRegisterUser = async () => {
-        console.log("Signup Pressed");
+    const handleSignupUser = async () => {
+        const res = await signup(firstName, lastName, email, password);
     }
 
     return (
@@ -52,7 +53,7 @@ function Signup() {
                     name="password" placeholder="Password" required
                 />
                 <br />
-                <button onClick={handleRegisterUser} className="main_button" id="signup_btn">Sign Up</button>
+                <button onClick={handleSignupUser} className="main_button" id="signup_btn">Signup</button>
             </div>
         </div>
     )

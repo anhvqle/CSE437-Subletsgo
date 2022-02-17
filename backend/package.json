@@ -2,8 +2,9 @@
   "name": "subletsgo-backend",
   "version": "1.0.0",
   "description": "backend api for subletsgo",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
+    "start": "npx nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,7 +21,9 @@
   },
   "homepage": "https://github.com/anhvqle/CSE437-Subletsgo#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.2",
+    "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.3.3",
     "sequelize": "^6.16.1"
   }
