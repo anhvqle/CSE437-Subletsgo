@@ -1,10 +1,9 @@
+import AuthNavigationBar from "../AuthNavBar";
+
 function Login() {
     return (
         <div>
-            <p>Login Page</p>
-            <p>Login Page</p>
-            <p>Login Page</p>
-            <p>Login Page</p>
+            <AuthNavigationBar />
             <p>Login Page</p>
         </div>
     )
