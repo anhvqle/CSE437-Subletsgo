@@ -8,8 +8,12 @@ function Signup() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    const [registerMsg, setRegisterMsg] = useState("");
+
     const handleSignupUser = async () => {
         const res = await signup(firstName, lastName, email, password);
+
+        // setRegisterMsg(res.data.message);
     }
 
     return (
@@ -54,6 +58,7 @@ function Signup() {
                 />
                 <br />
                 <button onClick={handleSignupUser} className="main_button" id="signup_btn">Signup</button>
+                <p className="message">{registerMsg}</p>
             </div>
         </div>
     )
