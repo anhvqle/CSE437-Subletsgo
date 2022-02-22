@@ -8,25 +8,25 @@ function Signup() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const [registerMsg, setRegisterMsg] = useState("");
+    const [signupMsg, setSignupMsg] = useState("");
 
     const handleSignupUser = async () => {
         const res = await signup(firstName, lastName, email, password);
 
-        // setRegisterMsg(res.data.message);
+        setSignupMsg(res.data.message);
     }
 
     return (
         <div>
             <AuthNavigationBar />
-            <div className="center">
+            <div className="center center-block">
                 <p>First Name</p>
                 <input 
                     type="text"
                     onChange={(e) => {
                         setFirstName(e.target.value);
                     }}
-                    name="first_name" placeholder="First Name" required
+                    name="first_name" required
                 />
 
                 <p>Last Name</p>
@@ -35,30 +35,28 @@ function Signup() {
                     onChange={(e) => {
                         setlastName(e.target.value);
                     }}
-                    name="last_name"
-                    placeholder="Last Name"
-                    required
+                    name="last_name" required
                 />
 
-                <p>Email</p>
+                <p>Email*</p>
                 <input 
                     type="text"
                     onChange={(e) => {
                         setEmail(e.target.value);
                     }}
-                    name="email" placeholder="Email" required
+                    name="email" required
                 />
 
-                <p>Password</p>
+                <p>Password*</p>
                 <input type="password"
                     onChange={(e) => {
                         setPassword(e.target.value);
                     }}
-                    name="password" placeholder="Password" required
+                    name="password" required
                 />
-                <br />
+                <br /><br />
                 <button onClick={handleSignupUser} className="main_button" id="signup_btn">Signup</button>
-                <p className="message">{registerMsg}</p>
+                <p className="message">{signupMsg}</p>
             </div>
         </div>
     )

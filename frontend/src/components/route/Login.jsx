@@ -6,8 +6,12 @@ function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    const [loginMsg, setLoginMsg] = useState("");
+
     const handleLoginUser = async () => {
         const res = await login(email, password);
+
+        setLoginMsg(res.data.message);
     }
     return (
         <div>
@@ -15,7 +19,7 @@ function Login() {
             <div className="center">
                 <p>Email</p>
                 <input 
-                    type="text"
+                    type="email"
                     onChange={(e) => {
                         setEmail(e.target.value);
                     }}
@@ -29,8 +33,9 @@ function Login() {
                     }}
                     name="password" placeholder="Password" required
                 />
-                <br />
+                <br /><br />
                 <button onClick={handleLoginUser} className="main_button" id="signup_btn">Login</button>
+                <p className="message">{loginMsg}</p>
             </div>
         </div>
     )
