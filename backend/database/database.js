@@ -1,15 +1,18 @@
-const Sequelize = require('sequelize');
+const Sequelize = require("sequelize");
 
-const sequelize = new Sequelize("subletsgo", "root", "helloVN84", {
-    dialect: "mysql",
-    host: "localhost",
+const sequelize = new Sequelize("subletsgo", "admin", "12345678", {
+  dialect: "mysql",
+  host: "subletsgo.cs4gix5zgdf3.us-east-2.rds.amazonaws.com",
 });
 
-sequelize.sync().then(result => {
+sequelize
+  .sync()
+  .then((result) => {
     console.log(result);
-}).catch((err) => {
+  })
+  .catch((err) => {
     console.log(err);
-});
+  });
 
 (async () => {
   try {
