@@ -1,10 +1,10 @@
-import AuthNavigationBar from "../AuthNavBar";
+import NavigationBar from "../NavigationBar";
 import apartment from '../../images/apartment.png';
 
 function WelcomePage() {
     return (
         <header>
-            <AuthNavigationBar />
+            <NavigationBar />
             <div className="introduction container">
                 <div className="row">
                     <div className="col">

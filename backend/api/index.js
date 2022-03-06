@@ -3,6 +3,7 @@ const signupApi = require('./auth/signup');
 const loginApi = require('./auth/login');
 
 const newTenantListingApi = require('./tenant/newTenantListingApi');
+const getTenantListingApi = require('./tenant/getTenantListingApi');
 
 const router = express.Router();
 
@@ -10,5 +11,6 @@ router.use(signupApi);
 router.use(loginApi);
 
 router.use(newTenantListingApi);
+router.use(getTenantListingApi);
 
 module.exports = router;

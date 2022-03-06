@@ -1,4 +1,4 @@
-import AuthNavigationBar from "../../AuthNavBar";
+import NavigationBar from "../../NavigationBar";
 import { useState } from "react";
 import signup from "../../../data/signupUser";
 
@@ -14,11 +14,15 @@ function Signup() {
         const res = await signup(firstName, lastName, email, password);
 
         setSignupMsg(res.data.message);
+
+        if (parseInt(res.status) === 2000) {
+            // Redirect to Login
+        }
     }
 
     return (
         <div>
-            <AuthNavigationBar />
+            <NavigationBar />
             <div className="center center-block">
                 <p>First Name
                     <input  type="text" onChange={(e) => {setFirstName(e.target.value);}} name="first_name" placeholder="First Name" required/>

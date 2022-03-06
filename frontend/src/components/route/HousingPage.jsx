@@ -1,9 +1,9 @@
-import AuthNavigationBar from "../AuthNavBar";
+import NavigationBar from "../NavigationBar";
 
 function Housing() {
     return (
         <div>
-            <AuthNavigationBar />
+            <NavigationBar />
             <div className="center">
                 <p>This is Housing Page</p>
             </div>

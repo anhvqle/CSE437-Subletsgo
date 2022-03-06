@@ -1,4 +1,4 @@
-import AuthNavigationBar from "../../AuthNavBar";
+import NavigationBar from "../../NavigationBar";
 import { useState } from "react";
 import login from "../../../data/loginUser";
 
@@ -12,10 +12,14 @@ function Login() {
         const res = await login(email, password);
 
         setLoginMsg(res.data.message);
+
+        if (parseInt(res.status) === 200) {
+            // Redirect to HousingPage
+        }
     }
     return (
         <div>
-            <AuthNavigationBar />
+            <NavigationBar />
             <div className="center">
                 <p>Email
                     <input type="text" onChange={(e) => {setEmail(e.target.value);}} name="email" placeholder="Email" required/>

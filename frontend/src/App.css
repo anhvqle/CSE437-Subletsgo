@@ -69,6 +69,8 @@ input {
 
 .layout {
     padding-top: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
 }
 
 .center {
@@ -76,4 +78,9 @@ input {
     margin-left: auto;
     margin-right: auto;
     width: 50%;
+}
+
+.bigger_size {
+    font-size: 1.1em;
+    padding-bottom: 1%;
 }

@@ -24,4 +24,23 @@ const createTenantList = async (fullName, phoneNumber, email, occupation, compan
     }
 };
 
+const getTenant = async () => {
+    const url = `${process.env.REACT_APP_API_HOST}/getTenantListing`;
+    console.log("SECOND HERE" , url);
+
+    let axiosConfig = {
+        withCredentials: true,
+        headers: {"Content-Type":"application/json"}
+    };
+
+    try {
+        const res = await axios.get(url, axiosConfig);
+        return res;
+    } catch (err) {
+        console.log("ERROR");
+        return err.response;
+    }
+};
+
 export default createTenantList;
+export {getTenant};

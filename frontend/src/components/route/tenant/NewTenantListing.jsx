@@ -1,4 +1,4 @@
-import AuthNavigationBar from "../../AuthNavBar";
+import NavigationBar from "../../NavigationBar";
 import { useState } from "react";
 import { Container } from "react-bootstrap";
 import createTenantList from '../../../data/tenant';
@@ -13,11 +13,15 @@ function NewTenantListing() {
 
     const handleCreateTenantListing = async () => {
         const res = await createTenantList(fullName, phoneNumber, email, occupation, company, description);
+
+        if (parseInt(res.status) === 200) {
+            // Redirect to TenantPage
+        }
     }
 
     return (
         <div>
-            <AuthNavigationBar />
+            <NavigationBar />
             <Container>
                 <p>Full Name
                     <input type="text" onChange={(e) => {setFullName(e.target.value);}} name="full_name" required/>
