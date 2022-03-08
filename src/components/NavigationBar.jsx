@@ -19,6 +19,12 @@ const AuthNavigationBar = () => {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto"></Nav>
                     {
+                        currUser && (<Nav className="d-flex flex-row">
+                            <Nav.Link className="auth-navbar" href="/housing">Housing</Nav.Link>
+                            <Nav.Link className="auth-navbar" href="/tenant">Tenant</Nav.Link>
+                        </Nav>)
+                    }
+                    {
                         currUser
                             ? <Button onClick={logoutClicked}>Logout</Button>
                             : (<Nav>
