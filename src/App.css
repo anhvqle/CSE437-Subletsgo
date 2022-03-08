@@ -115,7 +115,12 @@
 }
 
 .antiquewhite {
-    color: whitesmoke;
+    color: antiquewhite;
+    font-size: larger;
+}
+
+.beige {
+    color: beige;
     font-size: larger;
 }
 
@@ -132,4 +137,9 @@
 
 [type="checkbox"] {
     vertical-align : middle;
+}
+
+[type="radio"] {
+    width: 15px;
+    height: 15px;
 }

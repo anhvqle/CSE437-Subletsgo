@@ -8,13 +8,14 @@ function NewTenantListing() {
     const [fullName, setFullName] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
     const [email, setEmail] = useState("");
-    const [occupation, setOccupation] = useState("");
-    const [company, setCompany] = useState("");
-    const [description, setDescription] = useState("");
     const [gender, setGender] = useState("male");
+    const [campus, setCampus] = useState("");
+    const [classStanding, setClassStanding] = useState("");
+    const [description, setDescription] = useState("");
 
     const handleCreateTenantListing = async () => {
-        const res = await createTenantList(fullName, phoneNumber, email, gender, occupation, company, description);
+        console.log(fullName, phoneNumber, email, gender, campus, classStanding, description);
+        const res = await createTenantList(fullName, phoneNumber, email, gender, campus, classStanding, description);
 
         if (parseInt(res.status) === 200) {
             navigate("/tenant");
@@ -25,7 +26,7 @@ function NewTenantListing() {
         <div>
             <NavigationBar />
             <Container>
-                <form className="margin-top">
+                <div className="margin-top">
                     <label className="format-form">Full Name</label>
                     <input className="input-50" type="text" onChange={(e) => {setFullName(e.target.value);}} name="full_name" required/>
                     <br />
@@ -47,18 +48,33 @@ function NewTenantListing() {
                     <br />
                     <br />
 
-                    <label className="format-form">Occupation</label>
-                    <input className="input-50" type="text" onChange={(e) => {setOccupation(e.target.value);}} name="occupation" required/>
+                    <form onChange={(e) => setCampus(e.target.value)}>
+                        <p className="beige">Which campus affiliation best describes you?</p>
+                            <div className="beige radio">
+                                <label><input type="radio" name="campus" value="danforth"/> Danforth Campus</label>
+                            </div>
+                            <div className="beige radio">
+                                <label><input type="radio" name="campus" value="wusm"/> WUSM Campus</label>
+                            </div>
+                    </form>
                     <br />
 
-                    <label className="format-form">Company</label>
-                    <input className="input-50" type="text" onChange={(e) => {setCompany(e.target.value);}} name="company" required/>
+                    <label className="format-form">Class Standing:</label>
+                    <select defaultValue={"Freshman"} name="class_standing" onChange={(e) => setClassStanding(e.target.value)}>
+                        <option value="freshman">Freshman</option>
+                        <option value="sophomore">Sophomore</option>
+                        <option value="junior">Junior</option>
+                        <option value="senior">Senior</option>
+                        <option value="master">Master Student</option>
+                        <option value="PhD">PhD Student</option>
+                    </select>
+                    <br />
                     <br />
 
                     <label className="format-form">Description</label>
                     <input className="input-50" type="text" onChange={(e) => {setDescription(e.target.value);}} name="description" required/>
                     
-                </form>
+                </div>
 
                 <button onClick={handleCreateTenantListing} className="main_button" id="signup_btn">POST</button>
             </Container>

@@ -18,6 +18,51 @@ function TenantFilter() {
                 </label>   
             </div>
             <hr />
+
+            <p className="filter-header">CAMPUS</p>
+            <div className="ui">
+                <label className="filter-option">
+                    <input className="checkbox" type="checkbox" id="danforth" />  Danforth Campus
+                </label>   
+            </div>
+            <div className="ui">
+                <label className="filter-option">
+                    <input className="checkbox" type="checkbox" id="wusm" />  WUSM Campus
+                </label>   
+            </div>
+            <hr />
+
+            <p className="filter-header">CLASS STANDING</p>
+            <div className="ui">
+                <label className="filter-option">
+                    <input className="checkbox" type="checkbox" id="freshman" />  Freshman
+                </label>   
+            </div>
+            <div className="ui">
+                <label className="filter-option">
+                    <input className="checkbox" type="checkbox" id="sophomore" />  Sophomore
+                </label>   
+            </div>
+            <div className="ui">
+                <label className="filter-option">
+                    <input className="checkbox" type="checkbox" id="junior" />  Junior
+                </label>   
+            </div>
+            <div className="ui">
+                <label className="filter-option">
+                    <input className="checkbox" type="checkbox" id="senior" />  Senior
+                </label>   
+            </div>
+            <div className="ui">
+                <label className="filter-option">
+                    <input className="checkbox" type="checkbox" id="master" />  Master Student
+                </label>   
+            </div>
+            <div className="ui">
+                <label className="filter-option">
+                    <input className="checkbox" type="checkbox" id="phd" />  PhD Student
+                </label>   
+            </div>
         </div>
         
     )

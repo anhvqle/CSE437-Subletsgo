@@ -24,15 +24,15 @@ const Tenant = sequelize.define("tenant", {
         type: Sequelize.STRING,
         allowNull: false,
     },
+    campus: {
+        type: Sequelize.STRING,
+        allowNull: true,
+    },
+    classStanding: {
+        type: Sequelize.STRING,
+        allowNull: true,
+    },
     description: {
-        type: Sequelize.STRING,
-        allowNull: true,
-    },
-    occupation: {
-        type: Sequelize.STRING,
-        allowNull: true,
-    },
-    company: {
         type: Sequelize.STRING,
         allowNull: true,
     },

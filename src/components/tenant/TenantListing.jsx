@@ -1,5 +1,17 @@
 import { Container, Col, Row, ListGroup } from "react-bootstrap";
 
+function capitalizeFirstLetter(s) {
+    return s.charAt(0).toUpperCase() + s.slice(1)
+}
+
+function getCampusName(s) {
+    if (s == "danforth") 
+        s = capitalizeFirstLetter(s);
+    else
+        s = s.toUpperCase();
+    return s + " Campus";
+}
+
 function TenantListing(props) {
     return (
         <div>
@@ -12,14 +24,14 @@ function TenantListing(props) {
                                     <Row>
                                         <Col sm={8}>
                                             <div className="fw-bold">{t.fullName}</div>
-                                            {`${t.occupation} @ ${t.company}`}
+                                            {`${capitalizeFirstLetter(t.classStanding)} @ ${getCampusName(t.campus)}`}
                                             <ul>
-                                                <li>{t.description}</li>
+                                                <li>{(t.description == undefined) ? "No description available" : t.description}</li>
                                             </ul>
                                         </Col>
                                         <Col>
                                             <div className="bigger_size">
-                                                <i className={t.gender === 'other' ? "fw-bold fa fa-genderless" :`fw-bold fa fa-${t.gender}`}></i> {t.gender.charAt(0).toUpperCase() + t.gender.slice(1)}
+                                                <i className={t.gender === 'other' ? "fw-bold fa fa-genderless" :`fw-bold fa fa-${t.gender}`}></i> {capitalizeFirstLetter(t.gender)}
                                             </div>
                                             <div className="bigger_size"><i className="fw-bold fa fa-phone"></i> {t.phoneNumber}</div>
                                             <div className="bigger_size"><i className="fw-bold fa fa-envelope"></i> {t.email}</div>
