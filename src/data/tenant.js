@@ -1,24 +1,24 @@
 import axios from "axios";
 
 const createTenantList = async (fullName, phoneNumber, email, gender, occupation, company, description) => {
-    const url = `${process.env.REACT_APP_API_HOST}/newTenantListingApi`;
+    const url = `/api/newTenantListingApi`;
 
     let axiosConfig = {
         withCredentials: true,
-        headers: {"Content-Type":"application/json"}
+        headers: { "Content-Type": "application/json" }
     }
 
     try {
         const res = await axios.post(url, {
             fullName: fullName,
-            phoneNumber : phoneNumber,
-            email : email,
-            gender : gender,
-            occupation : occupation,
-            company : company,
+            phoneNumber: phoneNumber,
+            email: email,
+            gender: gender,
+            occupation: occupation,
+            company: company,
             description: description,
         }, axiosConfig);
-        
+
         return res;
     } catch (err) {
         return err.response;
@@ -30,7 +30,7 @@ const getTenant = async () => {
 
     let axiosConfig = {
         withCredentials: true,
-        headers: {"Content-Type":"application/json"}
+        headers: { "Content-Type": "application/json" }
     };
 
     try {
@@ -42,4 +42,4 @@ const getTenant = async () => {
 };
 
 export default createTenantList;
-export {getTenant};
+export { getTenant };

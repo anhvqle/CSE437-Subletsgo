@@ -4,7 +4,7 @@
   "description": "backend api for subletsgo",
   "main": "index.js",
   "scripts": {
-    "start": "npx nodemon index.js",
+    "server": "npx nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

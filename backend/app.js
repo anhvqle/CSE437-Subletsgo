@@ -5,13 +5,13 @@ require("./models/user");
 
 const app = express();
 
-const corsOptions = {
-    origin: "http://localhost:3000",
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    credentials: true,
-};
+// const corsOptions = {
+//     origin: "http://localhost:3000",
+//     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+//     credentials: true,
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -19,6 +19,6 @@ app.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
-app.use('/', api)
+app.use('/api', api)
 
 module.exports = app;
