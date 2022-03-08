@@ -1,8 +1,21 @@
 import NavigationBar from "./NavigationBar";
 import apartment from '../images/apartment.png';
 import UserContext from "../context/UserContext";
+import { useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 function WelcomePage() {
+    let navigate = useNavigate();
+    let { currUser, setUser } = useContext(UserContext);
+
+    useEffect(() => {
+        (async () => {
+            if (currUser) {
+                navigate("/housing");
+            }
+        })();
+    }, [currUser]);
+
     return (
         <header>
             <NavigationBar />

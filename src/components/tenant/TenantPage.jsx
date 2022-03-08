@@ -1,15 +1,22 @@
 import NavigationBar from "../NavigationBar";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Container, Col, Row } from "react-bootstrap";
 import { getTenant } from '../../data/tenant';
 import TenantListing from "./TenantListing";
 import TenantFilter from "./TenantFilter";
+import UserContext from "../../context/UserContext"
+import { useNavigate } from "react-router-dom";
 
 function Tenant() {
-    const[tenants, setTenants] = useState([]);
+    let navigate = useNavigate();
+    const [tenants, setTenants] = useState([]);
+    let { currUser, setUser } = useContext(UserContext);
 
     useEffect(() => {
         (async () => {
+            if (!currUser) {
+                navigate("/");
+            }
             let tenants = await getTenant();
             console.log(tenants);
             setTenants(tenants.data.tenants);

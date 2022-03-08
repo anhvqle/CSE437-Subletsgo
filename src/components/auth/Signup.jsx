@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from "react";
 import signup from "../../data/signupUser";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../../context/UserContext";
+import jwtDecode from "jwt-decode";
 
 function Signup() {
     let navigate = useNavigate();

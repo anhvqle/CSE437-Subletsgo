@@ -8,19 +8,24 @@ import WelcomePage from "./components/WelcomePage";
 import Housing from "./components/HousingPage";
 import Tenant from "./components/tenant/TenantPage";
 import NewTenantListing from "./components/tenant/NewTenantListing";
-// import jwtDecode from "jwt-decode";
 import UserContext from "./context/UserContext"
+import jwtDecode from "jwt-decode";
 
 
 function App() {
     const [currUser, setUser] = useState(null);
 
     useEffect(() => {
+
         (async () => {
+            let user = null;
             let authtoken = localStorage.getItem('authtoken')
-            setUser(authtoken);
+            if (authtoken) {
+                user = jwtDecode(authtoken);
+            }
+            setUser(user);
         })();
-    }, [currUser]);
+    }, []);
 
 
     return (
