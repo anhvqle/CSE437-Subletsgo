@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const sequelize = require("../database/database");
+const User = require("./user")
 
 const Tenant = sequelize.define("tenant", {
     id: {
@@ -37,5 +38,6 @@ const Tenant = sequelize.define("tenant", {
         allowNull: true,
     },
 });
+Tenant.belongsTo(User);
 
 module.exports = Tenant

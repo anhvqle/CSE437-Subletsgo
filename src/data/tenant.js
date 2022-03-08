@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const createTenantList = async (fullName, phoneNumber, email, gender, campus, classStanding, description) => {
+const createTenantList = async (fullName, phoneNumber, email, gender, campus, classStanding, description, userId) => {
     const url = "/api/newTenantListingApi";
 
     let axiosConfig = {
@@ -17,6 +17,7 @@ const createTenantList = async (fullName, phoneNumber, email, gender, campus, cl
             campus: campus,
             classStanding: classStanding,
             description: description,
+            userId
         }, axiosConfig);
 
         return res;

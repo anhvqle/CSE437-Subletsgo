@@ -16,21 +16,23 @@ function NewTenantListing() {
     const [campus, setCampus] = useState("");
     const [classStanding, setClassStanding] = useState("");
     const [description, setDescription] = useState("");
+    const [userId, setUserId] = useState(null);
 
     useEffect(() => {
         (async () => {
             if (!currUser) {
                 navigate("/");
             }
-            let { firstName, lastName, email: userEmail, id: userId } = currUser
+            let { firstName, lastName, email: userEmail, id } = currUser
             setFullName(`${firstName} ${lastName}`);
             setEmail(userEmail)
+            setUserId(id)
         })();
     }, [currUser]);
 
     const handleCreateTenantListing = async () => {
         console.log(fullName, phoneNumber, email, gender, campus, classStanding, description);
-        const res = await createTenantList(fullName, phoneNumber, email, gender, campus, classStanding, description);
+        const res = await createTenantList(fullName, phoneNumber, email, gender, campus, classStanding, description, userId);
 
         if (parseInt(res.status) === 200) {
             navigate("/tenant");

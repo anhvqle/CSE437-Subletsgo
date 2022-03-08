@@ -8,12 +8,12 @@ router.get("/getTenantListing", async (req, res) => {
     const tenants = await Tenant.findAll();
 
     if (tenants) {
-        res.status(200).json({tenants})
+        res.status(200).json({ tenants })
     }
     else {
         return res.status(400)
     }
 
 });
-  
+
 module.exports = router;
