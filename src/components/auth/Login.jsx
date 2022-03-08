@@ -7,7 +7,6 @@ import UserContext from "../../context/UserContext";
 function Login() {
     let navigate = useNavigate();
     let { currUser, setUser } = useContext(UserContext);
-    console.log({ currUser });
 
     useEffect(() => {
         (async () => {

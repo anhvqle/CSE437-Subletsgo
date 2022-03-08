@@ -14,9 +14,15 @@ function Tenant() {
 
     useEffect(() => {
         (async () => {
+            console.log(currUser);
             if (!currUser) {
                 navigate("/");
             }
+        })();
+    }, [currUser]);
+
+    useEffect(() => {
+        (async () => {
             let tenants = await getTenant();
             console.log(tenants);
             setTenants(tenants.data.tenants);

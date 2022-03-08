@@ -13,19 +13,8 @@ import jwtDecode from "jwt-decode";
 
 
 function App() {
-    const [currUser, setUser] = useState(null);
-
-    useEffect(() => {
-
-        (async () => {
-            let user = null;
-            let authtoken = localStorage.getItem('authtoken')
-            if (authtoken) {
-                user = jwtDecode(authtoken);
-            }
-            setUser(user);
-        })();
-    }, []);
+    let authtoken = localStorage.getItem('authtoken')
+    const [currUser, setUser] = useState(authtoken ? jwtDecode(authtoken) : null);
 
 
     return (
