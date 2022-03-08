@@ -1,10 +1,13 @@
 import NavigationBar from "../NavigationBar";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import createTenantList from '../../data/tenant';
 import { useNavigate } from "react-router-dom";
+import UserContext from "../../context/UserContext"
+
 function NewTenantListing() {
     let navigate = useNavigate();
+    let { currUser } = useContext(UserContext);
     const [fullName, setFullName] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
     const [email, setEmail] = useState("");
@@ -12,6 +15,14 @@ function NewTenantListing() {
     const [campus, setCampus] = useState("");
     const [classStanding, setClassStanding] = useState("");
     const [description, setDescription] = useState("");
+
+    useEffect(() => {
+        (async () => {
+            if (!currUser) {
+                navigate("/");
+            }
+        })();
+    }, [currUser]);
 
     const handleCreateTenantListing = async () => {
         console.log(fullName, phoneNumber, email, gender, campus, classStanding, description);
@@ -28,15 +39,15 @@ function NewTenantListing() {
             <Container>
                 <div className="margin-top">
                     <label className="format-form">Full Name</label>
-                    <input className="input-50" type="text" onChange={(e) => {setFullName(e.target.value);}} name="full_name" required/>
+                    <input className="input-50" type="text" onChange={(e) => { setFullName(e.target.value); }} name="full_name" required />
                     <br />
 
                     <label className="format-form">Phone Number</label>
-                    <input className="input-50" type="text" onChange={(e) => {setPhoneNumber(e.target.value);}} name="phone_number" required/>
+                    <input className="input-50" type="text" onChange={(e) => { setPhoneNumber(e.target.value); }} name="phone_number" required />
                     <br />
 
                     <label className="format-form">Email</label>
-                    <input className="input-50" type="text" onChange={(e) => {setEmail(e.target.value);}} name="email" required/>
+                    <input className="input-50" type="text" onChange={(e) => { setEmail(e.target.value); }} name="email" required />
                     <br />
 
                     <label className="format-form">Gender:</label>
@@ -50,12 +61,12 @@ function NewTenantListing() {
 
                     <form onChange={(e) => setCampus(e.target.value)}>
                         <p className="beige">Which campus affiliation best describes you?</p>
-                            <div className="beige radio">
-                                <label><input type="radio" name="campus" value="danforth"/> Danforth Campus</label>
-                            </div>
-                            <div className="beige radio">
-                                <label><input type="radio" name="campus" value="wusm"/> WUSM Campus</label>
-                            </div>
+                        <div className="beige radio">
+                            <label><input type="radio" name="campus" value="danforth" /> Danforth Campus</label>
+                        </div>
+                        <div className="beige radio">
+                            <label><input type="radio" name="campus" value="wusm" /> WUSM Campus</label>
+                        </div>
                     </form>
                     <br />
 
@@ -72,8 +83,8 @@ function NewTenantListing() {
                     <br />
 
                     <label className="format-form">Description</label>
-                    <input className="input-50" type="text" onChange={(e) => {setDescription(e.target.value);}} name="description" required/>
-                    
+                    <input className="input-50" type="text" onChange={(e) => { setDescription(e.target.value); }} name="description" required />
+
                 </div>
 
                 <button onClick={handleCreateTenantListing} className="main_button" id="signup_btn">POST</button>

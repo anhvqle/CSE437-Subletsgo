@@ -30,8 +30,7 @@ function Signup() {
 
         setSignupMsg(res.data.message);
 
-        if (parseInt(res.status) === 2000) {
-            // TODO: Redirect to Login
+        if (parseInt(res.status) === 200) {
             let token = res.data.token;
             localStorage.setItem('authtoken', token);
             setUser(jwtDecode(token));
@@ -59,6 +58,7 @@ function Signup() {
                     <input className="input-100" type="password" onChange={(e) => { setPassword(e.target.value); }} name="password" placeholder="Password" required />
                 </p>
                 <ul id="pw-req">
+                    {/* TODO: did we do this??? */}
                     <li>Your password must contain at least 8 characters.</li>
                     <li>Your password must contain at least 1 special character.</li>
                     <li>Your password can’t be entirely numeric.</li>
