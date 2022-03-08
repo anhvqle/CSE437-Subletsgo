@@ -57,12 +57,11 @@ function Signup() {
                 <p className="antiquewhite">Password*
                     <input className="input-100" type="password" onChange={(e) => { setPassword(e.target.value); }} name="password" placeholder="Password" required />
                 </p>
-                <ul id="pw-req">
-                    {/* TODO: did we do this??? */}
+                {/* <ul id="pw-req">
                     <li>Your password must contain at least 8 characters.</li>
                     <li>Your password must contain at least 1 special character.</li>
                     <li>Your password can’t be entirely numeric.</li>
-                </ul>
+                </ul> */}
                 <br />
 
                 <button onClick={handleSignupUser} className="center auth_button" id="signup_btn">Signup</button>
