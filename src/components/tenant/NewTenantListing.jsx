@@ -9,9 +9,9 @@ function NewTenantListing() {
     let navigate = useNavigate();
     let { currUser } = useContext(UserContext);
 
-    const [fullName, setFullName] = useState("");
+    const [fullName, setFullName] = useState(`${currUser.firstName} ${currUser.lastName}`);
     const [phoneNumber, setPhoneNumber] = useState("");
-    const [email, setEmail] = useState("");
+    const [email, setEmail] = useState(currUser.email);
     const [gender, setGender] = useState("male");
     const [campus, setCampus] = useState("");
     const [classStanding, setClassStanding] = useState("freshman");
@@ -45,7 +45,7 @@ function NewTenantListing() {
             <Container>
                 <div className="margin-top">
                     <label className="format-form">Full Name</label>
-                    <input className="input-50" type="text" value={fullName} onChange={(e) => { setFullName(e.target.value); }} name="full_name" required />
+                    <input className="input-50" type="text" placeholder={`${currUser.firstName} ${currUser.lastName}`} value={fullName} onChange={(e) => { setFullName(e.target.value); }} name="full_name" required />
                     <br />
 
                     <label className="format-form">Phone Number</label>
@@ -53,7 +53,7 @@ function NewTenantListing() {
                     <br />
 
                     <label className="format-form">Email</label>
-                    <input className="input-50" type="text" value={email} onChange={(e) => { setEmail(e.target.value); }} name="email" required />
+                    <input className="input-50" type="text" placeholder={currUser.email} value={email} onChange={(e) => { setEmail(e.target.value); }} name="email" required />
                     <br />
 
                     <label className="format-form">Gender:</label>
