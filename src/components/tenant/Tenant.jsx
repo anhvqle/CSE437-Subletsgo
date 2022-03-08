@@ -64,6 +64,17 @@ function Tenant() {
         return filteredTennants;
     }
 
+    const changeOption = (optionId, checked) => {
+        let clonedFilter = { ...selectedFilter };
+        let [category, option] = optionId.split("-");
+        clonedFilter[category][option] = checked;
+        setSelectedFilter(clonedFilter);
+    }
+
+    const changeExcludeMyPost = (checked) => {
+        setExcludeMyPost(checked);
+    }
+
     return (
         <div>
             <NavigationBar />
@@ -81,7 +92,7 @@ function Tenant() {
                         <TenantListing tenants={filterTennants()} />
                     </Col>
                     <Col>
-                        <TenantFilter selectedFilter={selectedFilter} setSelectedFilter={setSelectedFilter} setExcludeMyPost={setExcludeMyPost} />
+                        <TenantFilter changeOption={changeOption} changeExcludeMyPost={changeExcludeMyPost} />
                     </Col>
                 </Row>
             </Container>

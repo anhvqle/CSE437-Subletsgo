@@ -1,21 +1,19 @@
-const TenantFilter = ({ selectedFilter, setSelectedFilter, setExcludeMyPost }) => {
+const TenantFilter = ({ changeOption, changeExcludeMyPost }) => {
 
-    const changeOption = (optionId, checked) => {
-        let clonedFilter = { ...selectedFilter };
-        let [category, option] = optionId.split("-");
-        clonedFilter[category][option] = checked;
-        setSelectedFilter(clonedFilter);
-    }
+
 
     const onOptionChange = (e) => {
         changeOption(e.target.id, e.target.checked);
+    }
+    const onPostExcluded = (e) => {
+        changeExcludeMyPost(e.target.checked);
     }
 
     return (
         <div>
             <div>
                 <label className="filter-option">
-                    <input className="checkbox" type="checkbox" onChange={(e) => { setExcludeMyPost(e.target.checked); }} /> Exclude my post
+                    <input className="checkbox" type="checkbox" onChange={onPostExcluded} /> Exclude my post
                 </label>
                 <p className="filter-header">GENDER</p>
                 <div className="ui">
