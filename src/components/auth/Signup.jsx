@@ -32,7 +32,9 @@ function Signup() {
 
         if (parseInt(res.status) === 2000) {
             // TODO: Redirect to Login
-            localStorage.setItem('authtoken', res.data.token);
+            let token = res.data.token;
+            localStorage.setItem('authtoken', token);
+            setUser(jwtDecode(token));
             navigate("/housing");
         }
     }

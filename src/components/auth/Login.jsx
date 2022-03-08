@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from "react";
 import login from "../../data/loginUser";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../../context/UserContext";
+import jwtDecode from "jwt-decode";
 
 function Login() {
     let navigate = useNavigate();
@@ -27,10 +28,9 @@ function Login() {
         setLoginMsg(res.data.message);
 
         if (parseInt(res.status) === 200) {
-            // TODO: Redirect to HousingPage
             let token = res.data.token;
             localStorage.setItem('authtoken', token);
-            setUser(token);
+            setUser(jwtDecode(token));
             navigate("/housing");
         }
     }

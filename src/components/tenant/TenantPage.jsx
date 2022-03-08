@@ -24,7 +24,6 @@ function Tenant() {
     useEffect(() => {
         (async () => {
             let tenants = await getTenant();
-            console.log(tenants);
             setTenants(tenants.data.tenants);
         })();
     }, []);

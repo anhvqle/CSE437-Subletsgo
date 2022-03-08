@@ -13,22 +13,20 @@ router.post("/login", async (req, res) => {
             console.log("Error: ", err);
         }
     );
-
-    if (!userWithEmail || userWithEmail.password !== password){
+    console.log({ userWithEmail });
+    if (!userWithEmail || userWithEmail.password !== password) {
         return res.status(400).json({ message: "Email or password does not match!" });
     }
-
+    const userData = userWithEmail.dataValues;
+    delete userData.password;
     const jwtToken = jwt.sign(
-        {
-            id: userWithEmail.id,
-            email: userWithEmail.email
-        },
+        userData,
         "secret_jwt",
         { expiresIn: "1d" }
     );
 
     res.status(200).json({ message: "Welcome Back!", token: jwtToken });
 });
-  
+
 
 module.exports = router;
