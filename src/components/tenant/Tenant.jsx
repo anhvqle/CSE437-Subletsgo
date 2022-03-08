@@ -29,7 +29,6 @@ function Tenant() {
 
     const [excludeMyPost, setExcludeMyPost] = useState(false);
     const [selectedFilter, setSelectedFilter] = useState({
-        useFilter: false,
         gender: {
             male: false,
             female: false,
@@ -50,20 +49,16 @@ function Tenant() {
     });
 
     const filterTennants = () => {
-        if (!selectedFilter.useFilter) return tenants;
         let filteredTennants = tenants;
-        let selectedFilterNoUseFilter = {
-            ...selectedFilter
-        }
-        delete selectedFilterNoUseFilter.useFilter
         if (excludeMyPost) {
             filteredTennants = filteredTennants.filter((t) => t.userId !== currUser.id)
         }
-        for (const [category, optionContainer] of Object.entries(selectedFilterNoUseFilter)) {
+        for (const [category, optionContainer] of Object.entries(selectedFilter)) {
             let selectedSubcategory = []
             for (const [subCategory, checked] of Object.entries(optionContainer)) {
                 if (checked) selectedSubcategory.push(subCategory)
             }
+            if (selectedSubcategory.length === 0) continue;
             filteredTennants = filteredTennants.filter((t) => selectedSubcategory.includes(t[category]))
         }
         return filteredTennants;
