@@ -8,6 +8,7 @@ import UserContext from "../../context/UserContext"
 function NewTenantListing() {
     let navigate = useNavigate();
     let { currUser } = useContext(UserContext);
+
     const [fullName, setFullName] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
     const [email, setEmail] = useState("");
@@ -21,6 +22,9 @@ function NewTenantListing() {
             if (!currUser) {
                 navigate("/");
             }
+            let { firstName, lastName, email: userEmail, id: userId } = currUser
+            setFullName(`${firstName} ${lastName}`);
+            setEmail(userEmail)
         })();
     }, [currUser]);
 
@@ -39,7 +43,7 @@ function NewTenantListing() {
             <Container>
                 <div className="margin-top">
                     <label className="format-form">Full Name</label>
-                    <input className="input-50" type="text" onChange={(e) => { setFullName(e.target.value); }} name="full_name" required />
+                    <input className="input-50" type="text" value={fullName} onChange={(e) => { setFullName(e.target.value); }} name="full_name" required />
                     <br />
 
                     <label className="format-form">Phone Number</label>
@@ -47,7 +51,7 @@ function NewTenantListing() {
                     <br />
 
                     <label className="format-form">Email</label>
-                    <input className="input-50" type="text" onChange={(e) => { setEmail(e.target.value); }} name="email" required />
+                    <input className="input-50" type="text" value={email} onChange={(e) => { setEmail(e.target.value); }} name="email" required />
                     <br />
 
                     <label className="format-form">Gender:</label>
