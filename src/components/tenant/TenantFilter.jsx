@@ -72,7 +72,7 @@ const TenantFilter = ({ changeOption, changeExcludeMyPost }) => {
                 </div>
                 <div className="ui">
                     <label className="filter-option">
-                        <input className="checkbox" type="checkbox" id="classStanding-phd" onChange={onOptionChange} />  PhD Student
+                        <input className="checkbox" type="checkbox" id="classStanding-PhD" onChange={onOptionChange} />  PhD Student
                     </label>
                 </div>
             </div>

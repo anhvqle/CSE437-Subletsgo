@@ -44,7 +44,7 @@ function Tenant() {
             junior: false,
             senior: false,
             master: false,
-            phd: false
+            PhD: false
         }
     });
 
