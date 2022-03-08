@@ -5,11 +5,9 @@ const jwt = require("jsonwebtoken");
 const router = express.Router();
 
 router.post("/newTenantListingApi", async (req, res) => {
-    const { fullName, phoneNumber, email, occupation, company, description } = req.body;
-  
-    console.log(fullName, phoneNumber, email, occupation, company, description);
+    const { fullName, phoneNumber, email, gender, occupation, company, description } = req.body;
 
-    const newTenant = new Tenant({ fullName, phoneNumber, email, occupation, company, description });
+    const newTenant = new Tenant({ fullName, phoneNumber, email, gender, occupation, company, description });
 
     const savedTenant = await newTenant.save().catch((err) => {
         res.status(500).json({ message: "Cannot create a new tenant listing!" });

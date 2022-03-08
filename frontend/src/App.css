@@ -57,20 +57,38 @@
     padding: 10px;
 }
 
-input {
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
+
+.input-50 {
+    padding: 0.5rem 0 0.5rem 0;
+    border-radius: 10px;
+    width: 50%;
+    padding-left: 10px;
+    margin-bottom: 1rem;
+}
+
+.input-100 {
     padding: 0.5rem 0 0.5rem 0;
     border-radius: 10px;
     width: 100%;
     padding-left: 10px;
-    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.format-form { 
+    display: inline-block;
+    width: 200px;
+    color:beige;
+    font-size: larger;
 }
 
 .layout {
     padding-top: 1%;
     padding-left: 2%;
     padding-right: 2%;
+}
+
+.margin-top {
+    margin-top: 2%;
 }
 
 .center {
@@ -83,4 +101,20 @@ input {
 .bigger_size {
     font-size: 1.1em;
     padding-bottom: 1%;
+}
+
+.auth_button { 
+    background: linear-gradient(135deg, #f0c15d 0%, #f42c90 100%);
+    color: antiquewhite;
+    font-size: larger;
+}
+
+#pw-req {
+    color: whitesmoke;
+    opacity: 0.8;
+}
+
+.antiquewhite {
+    color: whitesmoke;
+    font-size: larger;
 }

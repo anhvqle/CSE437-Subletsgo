@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const createTenantList = async (fullName, phoneNumber, email, occupation, company, description) => {
+const createTenantList = async (fullName, phoneNumber, email, gender, occupation, company, description) => {
     const url = `${process.env.REACT_APP_API_HOST}/newTenantListingApi`;
 
     let axiosConfig = {
@@ -13,6 +13,7 @@ const createTenantList = async (fullName, phoneNumber, email, occupation, compan
             fullName: fullName,
             phoneNumber : phoneNumber,
             email : email,
+            gender : gender,
             occupation : occupation,
             company : company,
             description: description,
@@ -26,7 +27,6 @@ const createTenantList = async (fullName, phoneNumber, email, occupation, compan
 
 const getTenant = async () => {
     const url = `${process.env.REACT_APP_API_HOST}/getTenantListing`;
-    console.log("SECOND HERE" , url);
 
     let axiosConfig = {
         withCredentials: true,
@@ -37,7 +37,6 @@ const getTenant = async () => {
         const res = await axios.get(url, axiosConfig);
         return res;
     } catch (err) {
-        console.log("ERROR");
         return err.response;
     }
 };

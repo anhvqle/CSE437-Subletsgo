@@ -1,5 +1,5 @@
-import NavigationBar from "../NavigationBar";
-import apartment from '../../images/apartment.png';
+import NavigationBar from "./NavigationBar";
+import apartment from '../images/apartment.png';
 
 function WelcomePage() {
     return (

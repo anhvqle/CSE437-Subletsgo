@@ -2,12 +2,12 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css';
-import Login from "./components/route/authorization/Login";
-import Signup from "./components/route/authorization/Signup";
-import WelcomePage from "./components/route/WelcomePage";
-import Housing from "./components/route/HousingPage";
-import Tenant from "./components/route/tenant/TenantPage";
-import NewTenantListing from "./components/route/tenant/NewTenantListing";
+import Login from "./components/auth/Login";
+import Signup from "./components/auth/Signup";
+import WelcomePage from "./components/WelcomePage";
+import Housing from "./components/HousingPage";
+import Tenant from "./components/tenant/TenantPage";
+import NewTenantListing from "./components/tenant/NewTenantListing";
 
 function App() {
   return (

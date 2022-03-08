@@ -20,6 +20,10 @@ const Tenant = sequelize.define("tenant", {
         type: Sequelize.STRING,
         allowNull: true,
     },
+    gender: {
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
     description: {
         type: Sequelize.STRING,
         allowNull: true,
