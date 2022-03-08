@@ -4,6 +4,10 @@
     margin-right: 15%;
 }
 
+#responsive-navbar-nav {
+    margin-left: -6% !important;
+}
+
 .auth-navbar-title {
     font-size: 2em;
     color: white;
@@ -109,6 +113,7 @@
     background: linear-gradient(135deg, #f0c15d 0%, #f42c90 100%);
     color: antiquewhite;
     font-size: larger;
+    border-radius: 10px;
 }
 
 #pw-req {

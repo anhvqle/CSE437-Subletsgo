@@ -1,4 +1,4 @@
-import { Navbar, Nav, Container, Button } from "react-bootstrap";
+import { Navbar, Nav, Container } from "react-bootstrap";
 import UserContext from "../context/UserContext"
 import { useContext } from "react";
 
@@ -27,7 +27,7 @@ const AuthNavigationBar = () => {
                     }
                     {
                         currUser
-                            ? <Button class="btn btn-outline-light btn-lg" onClick={logoutClicked}>Logout</Button>
+                            ? <button className="btn btn-outline-light btn-lg" onClick={logoutClicked}>Logout</button>
                             : (<Nav>
                                 <Nav.Link className="auth-navbar" href="/signup">Signup</Nav.Link>
                                 <Nav.Link className="auth-navbar" href="/login">Login</Nav.Link>

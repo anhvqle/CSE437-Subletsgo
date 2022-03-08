@@ -1,7 +1,5 @@
 const TenantFilter = ({ changeOption, changeExcludeMyPost }) => {
 
-
-
     const onOptionChange = (e) => {
         changeOption(e.target.id, e.target.checked);
     }
