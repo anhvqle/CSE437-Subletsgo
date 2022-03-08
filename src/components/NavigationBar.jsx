@@ -1,6 +1,6 @@
 import { Navbar, Nav, Container, Button } from "react-bootstrap";
 import UserContext from "../context/UserContext"
-import { useState, useEffect, useContext } from "react";
+import { useContext } from "react";
 
 const AuthNavigationBar = () => {
 
@@ -19,14 +19,15 @@ const AuthNavigationBar = () => {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto"></Nav>
                     {
-                        currUser && (<Nav className="d-flex flex-row">
-                            <Nav.Link className="auth-navbar" href="/housing">Housing</Nav.Link>
+                        currUser && (<Nav className="me-auto d-flex flex-row">
                             <Nav.Link className="auth-navbar" href="/tenant">Tenant</Nav.Link>
+                            <Nav.Link className="auth-navbar" href="/housing">Housing</Nav.Link>
+                            <Nav.Link className="auth-navbar" href="/marketplace">Marketplace</Nav.Link>
                         </Nav>)
                     }
                     {
                         currUser
-                            ? <Button onClick={logoutClicked}>Logout</Button>
+                            ? <Button class="btn btn-outline-light btn-lg" onClick={logoutClicked}>Logout</Button>
                             : (<Nav>
                                 <Nav.Link className="auth-navbar" href="/signup">Signup</Nav.Link>
                                 <Nav.Link className="auth-navbar" href="/login">Login</Nav.Link>

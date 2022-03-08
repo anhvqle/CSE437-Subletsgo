@@ -5,7 +5,7 @@ function capitalizeFirstLetter(s) {
 }
 
 function getCampusName(s) {
-    if (s == "danforth")
+    if (s === "danforth")
         s = capitalizeFirstLetter(s);
     else
         s = s.toUpperCase();
@@ -26,7 +26,7 @@ function TenantListing(props) {
                                             <div className="fw-bold">{t.fullName}</div>
                                             {`${capitalizeFirstLetter(t.classStanding)} @ ${getCampusName(t.campus)}`}
                                             <ul>
-                                                <li>{(t.description == undefined) ? "No description available" : t.description}</li>
+                                                <li>{(t.description === undefined) ? "No description available" : t.description}</li>
                                             </ul>
                                         </Col>
                                         <Col>
