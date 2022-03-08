@@ -14,7 +14,6 @@ function Tenant() {
 
     useEffect(() => {
         (async () => {
-            console.log(currUser);
             if (!currUser) {
                 navigate("/");
             }
@@ -27,6 +26,44 @@ function Tenant() {
             setTenants(tenants.data.tenants);
         })();
     }, []);
+
+    const [selectedFilter, setSelectedFilter] = useState({
+        useFilter: false,
+        gender: {
+            male: false,
+            female: false,
+            other: false
+        },
+        campus: {
+            danforth: false,
+            wusm: false
+        },
+        classStanding: {
+            freshman: false,
+            sophomore: false,
+            junior: false,
+            senior: false,
+            master: false,
+            phd: false
+        }
+    });
+
+    const filterTennants = () => {
+        if (!selectedFilter.useFilter) return tenants;
+        let filteredTennants = tenants;
+        let selectedFilterNoUseFilter = {
+            ...selectedFilter
+        }
+        delete selectedFilterNoUseFilter.useFilter
+        for (const [category, optionContainer] of Object.entries(selectedFilterNoUseFilter)) {
+            let selectedSubcategory = []
+            for (const [subCategory, checked] of Object.entries(optionContainer)) {
+                if (checked) selectedSubcategory.push(subCategory)
+            }
+            filteredTennants = filteredTennants.filter((t) => selectedSubcategory.includes(t[category]))
+        }
+        return filteredTennants;
+    }
 
     return (
         <div>
@@ -42,10 +79,10 @@ function Tenant() {
                 </Row>
                 <Row className="layout">
                     <Col sm={8}>
-                        <TenantListing tenants={tenants} />
+                        <TenantListing tenants={filterTennants()} />
                     </Col>
                     <Col>
-                        <TenantFilter />
+                        <TenantFilter selectedFilter={selectedFilter} setSelectedFilter={setSelectedFilter} />
                     </Col>
                 </Row>
             </Container>

@@ -14,7 +14,7 @@ function NewTenantListing() {
     const [email, setEmail] = useState("");
     const [gender, setGender] = useState("male");
     const [campus, setCampus] = useState("");
-    const [classStanding, setClassStanding] = useState("");
+    const [classStanding, setClassStanding] = useState("freshman");
     const [description, setDescription] = useState("");
     const [userId, setUserId] = useState(null);
 

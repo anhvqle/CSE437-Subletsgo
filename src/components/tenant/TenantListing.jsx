@@ -5,7 +5,7 @@ function capitalizeFirstLetter(s) {
 }
 
 function getCampusName(s) {
-    if (s == "danforth") 
+    if (s == "danforth")
         s = capitalizeFirstLetter(s);
     else
         s = s.toUpperCase();
@@ -31,7 +31,7 @@ function TenantListing(props) {
                                         </Col>
                                         <Col>
                                             <div className="bigger_size">
-                                                <i className={t.gender === 'other' ? "fw-bold fa fa-genderless" :`fw-bold fa fa-${t.gender}`}></i> {capitalizeFirstLetter(t.gender)}
+                                                <i className={t.gender === 'other' ? "fw-bold fa fa-genderless" : `fw-bold fa fa-${t.gender}`}></i> {capitalizeFirstLetter(t.gender)}
                                             </div>
                                             <div className="bigger_size"><i className="fw-bold fa fa-phone"></i> {t.phoneNumber}</div>
                                             <div className="bigger_size"><i className="fw-bold fa fa-envelope"></i> {t.email}</div>
@@ -43,7 +43,7 @@ function TenantListing(props) {
                     })}
                 </ListGroup>
             ) : (
-                <div>There is currently no tenant listings available</div>
+                <div>There is currently no tenant listings available / match your search</div>
             )}
         </div>
     )
