@@ -1,14 +1,17 @@
 import { Navbar, Nav, Container } from "react-bootstrap";
 import UserContext from "../context/UserContext"
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AuthNavigationBar = () => {
 
     let { currUser, setUser } = useContext(UserContext);
+    let navigate = useNavigate();
 
     const logoutClicked = () => {
         setUser(null);
         localStorage.removeItem('authtoken');
+        navigate("/");
     }
 
     return (
