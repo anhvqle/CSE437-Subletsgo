@@ -1,4 +1,8 @@
-import { Container, Col, Row, ListGroup } from "react-bootstrap";
+import { Container, Col, Row, ListGroup, Button } from "react-bootstrap";
+import UserContext from "../../context/UserContext"
+import { useContext } from "react";
+import { deleteTenant } from "../../data/tenant"
+
 
 function capitalizeFirstLetter(s) {
     return s.charAt(0).toUpperCase() + s.slice(1)
@@ -13,6 +17,16 @@ function getCampusName(s) {
 }
 
 function TenantListing(props) {
+    const { currUser } = useContext(UserContext);
+    const { id: userId } = currUser;
+    const { deleteTenantFrontEnd } = props
+    const onDeleteClicked = (e) => {
+        // e.target.getAttribute("data-tenant-id");
+        let id = e.target.dataset.tenantId;
+        deleteTenant(id, userId)
+        deleteTenantFrontEnd(id)
+    }
+
     return (
         <div>
             {props.tenants && props.tenants.length > 0 ? (
@@ -36,6 +50,12 @@ function TenantListing(props) {
                                             <div className="bigger_size"><i className="fw-bold fa fa-phone"></i> {t.phoneNumber}</div>
                                             <div className="bigger_size"><i className="fw-bold fa fa-envelope"></i> {t.email}</div>
                                         </Col>
+                                        {
+                                            userId === t.userId &&
+                                            < Col sm={1}>
+                                                <Button className="btn-danger" data-tenant-id={t.id} onClick={onDeleteClicked}>X</Button>
+                                            </Col>
+                                        }
                                     </Row>
                                 </Container>
                             </ListGroup.Item>
@@ -44,8 +64,9 @@ function TenantListing(props) {
                 </ListGroup>
             ) : (
                 <div>There is currently no tenant listings available / match your search</div>
-            )}
-        </div>
+            )
+            }
+        </div >
     )
 }
 

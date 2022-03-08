@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 const createTenantList = async (fullName, phoneNumber, email, gender, campus, classStanding, description, userId) => {
     const url = "/api/newTenantListingApi";
 
@@ -42,5 +43,21 @@ const getTenant = async () => {
     }
 };
 
+const deleteTenant = async (id, userId) => {
+    const url = "api/deleteTenantListing";
+    let axiosConfig = {
+        data: { id, userId },
+        withCredentials: true,
+        headers: { "Content-Type": "application/json" }
+    }
+
+    try {
+        const res = await axios.delete(url, axiosConfig);
+        return res;
+    } catch (err) {
+        return err.response;
+    }
+}
+
 export default createTenantList;
-export { getTenant };
+export { getTenant, deleteTenant };

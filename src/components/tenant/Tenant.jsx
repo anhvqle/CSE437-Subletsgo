@@ -48,6 +48,15 @@ function Tenant() {
         }
     });
 
+    const deleteTenantFrontEnd = (id) => {
+        let clonedTenant = tenants.filter((t) => {
+            console.log(t.id);
+            console.log({ id });
+            return +t.id !== +id
+        });
+        console.log();
+        setTenants(clonedTenant)
+    }
     const filterTennants = () => {
         let filteredTennants = tenants;
         if (excludeMyPost) {
@@ -89,7 +98,7 @@ function Tenant() {
                 </Row>
                 <Row className="layout">
                     <Col sm={8}>
-                        <TenantListing tenants={filterTennants()} />
+                        <TenantListing tenants={filterTennants()} deleteTenantFrontEnd={deleteTenantFrontEnd} />
                     </Col>
                     <Col>
                         <TenantFilter changeOption={changeOption} changeExcludeMyPost={changeExcludeMyPost} />
