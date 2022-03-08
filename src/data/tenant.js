@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const createTenantList = async (fullName, phoneNumber, email, gender, occupation, company, description) => {
-    const url = `/api/newTenantListingApi`;
+    const url = "/api/newTenantListingApi";
 
     let axiosConfig = {
         withCredentials: true,
@@ -26,7 +26,7 @@ const createTenantList = async (fullName, phoneNumber, email, gender, occupation
 };
 
 const getTenant = async () => {
-    const url = `${process.env.REACT_APP_API_HOST}/getTenantListing`;
+    const url = "api/getTenantListing";
 
     let axiosConfig = {
         withCredentials: true,

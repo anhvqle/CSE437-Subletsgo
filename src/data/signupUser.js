@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const signup = async (firstName, lastName, email, password) => {
-    const url = `/api/signup`;
+    const url = "/api/signup";
 
     let axiosConfig = {
         withCredentials: true,

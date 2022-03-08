@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Container, Col, Row } from "react-bootstrap";
 import { getTenant } from '../../data/tenant';
 import TenantListing from "./TenantListing";
+import TenantFilter from "./TenantFilter";
 
 function Tenant() {
     const[tenants, setTenants] = useState([]);
@@ -10,6 +11,7 @@ function Tenant() {
     useEffect(() => {
         (async () => {
             let tenants = await getTenant();
+            console.log(tenants);
             setTenants(tenants.data.tenants);
         })();
     }, []);
@@ -31,7 +33,7 @@ function Tenant() {
                         <TenantListing tenants={tenants} />
                     </Col>
                     <Col>
-                        <div>FILTERS</div>
+                        <TenantFilter />
                     </Col>
                 </Row>
             </Container>

@@ -118,3 +118,18 @@
     color: whitesmoke;
     font-size: larger;
 }
+
+.checkbox {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 2%;
+}
+
+.filter-option {
+    font-size: 1.2em;
+    padding-bottom: 20px !important;
+} 
+
+[type="checkbox"] {
+    vertical-align : middle;
+}

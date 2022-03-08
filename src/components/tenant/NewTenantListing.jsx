@@ -2,7 +2,9 @@ import NavigationBar from "../NavigationBar";
 import { useState } from "react";
 import { Container } from "react-bootstrap";
 import createTenantList from '../../data/tenant';
+import { useNavigate } from "react-router-dom";
 function NewTenantListing() {
+    let navigate = useNavigate();
     const [fullName, setFullName] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
     const [email, setEmail] = useState("");
@@ -15,7 +17,7 @@ function NewTenantListing() {
         const res = await createTenantList(fullName, phoneNumber, email, gender, occupation, company, description);
 
         if (parseInt(res.status) === 200) {
-            // TODO: Redirect to TenantPage
+            navigate("/tenant");
         }
     }
 
