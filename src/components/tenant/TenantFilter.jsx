@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const TenantFilter = ({ selectedFilter, setSelectedFilter }) => {
+const TenantFilter = ({ selectedFilter, setSelectedFilter, setExcludeMyPost }) => {
     const [useFilter, setUseFilter] = useState(false);
 
     const changeUseFilter = (useFilter) => {
@@ -35,7 +35,11 @@ const TenantFilter = ({ selectedFilter, setSelectedFilter }) => {
 
             {
                 useFilter && (
-                    <div><p className="filter-header">GENDER</p>
+                    <div>
+                        <label className="filter-option">
+                            <input className="checkbox" type="checkbox" onChange={(e) => { setExcludeMyPost(e.target.checked); }} /> Exclude my post
+                        </label>
+                        <p className="filter-header">GENDER</p>
                         <div className="ui">
                             <label className="filter-option">
                                 <input className="checkbox" type="checkbox" id="gender-male" onChange={onOptionChange} />  Male
