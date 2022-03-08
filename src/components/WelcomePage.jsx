@@ -1,5 +1,6 @@
 import NavigationBar from "./NavigationBar";
 import apartment from '../images/apartment.png';
+import UserContext from "../context/UserContext";
 
 function WelcomePage() {
     return (
