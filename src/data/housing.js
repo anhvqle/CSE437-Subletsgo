@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 const createHousing = async (data) => {
-    const url = "/api/newHousing";
+    const url = "/api/newHousingApi";
 
     let axiosConfig = {
         withCredentials: true,
