@@ -8,10 +8,10 @@ import UserContext from "../../context/UserContext"
 function NewTenantListing() {
     let navigate = useNavigate();
     let { currUser } = useContext(UserContext);
-    let { firstName, lastName, email: userEmail, id: userId } = currUser
+    let { firstName, lastName, email: userEmail, id: userId, phoneNumber: userPhoneNumber } = currUser
 
     const [fullName, setFullName] = useState(`${firstName} ${lastName}`);
-    const [phoneNumber, setPhoneNumber] = useState("");
+    const [phoneNumber, setPhoneNumber] = useState(userPhoneNumber);
     const [email, setEmail] = useState(userEmail);
     const [gender, setGender] = useState("male");
     const [campus, setCampus] = useState("");
@@ -37,7 +37,7 @@ function NewTenantListing() {
                     <br />
 
                     <label className="format-form">Phone Number</label>
-                    <input className="input-50" type="text" onChange={(e) => { setPhoneNumber(e.target.value); }} name="phone_number" required />
+                    <input className="input-50" type="text" value={phoneNumber} onChange={(e) => { setPhoneNumber(e.target.value); }} name="phone_number" required />
                     <br />
 
                     <label className="format-form">Email</label>
