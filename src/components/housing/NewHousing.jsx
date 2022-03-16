@@ -1,18 +1,33 @@
 import NavigationBar from "../NavigationBar";
 import { useContext, useEffect, useState } from "react";
-import { Container } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../../context/UserContext"
 import CurrencyInput from 'react-currency-input-field';
 import { Autocomplete } from '@lob/react-address-autocomplete'
 
 const NewHousing = () => {
-    const [address, setAddress] = useState({})
+    const [data, setData] = useState({
+        price: 1000,
+        address: {},
+        numBed: 1,
+        numBath: 1,
+        heating: false,
+        cooling: false,
+        parking: false
+    });
 
 
     const handleAddressSelect = (selected) => {
-        console.log(selected);
-        setAddress(selected);
+        const clonedData = { ...data };
+        clonedData.address = selected
+        setData(clonedData)
+    }
+
+    const handlePriceChange = (value, name) => {
+        const clonedData = { ...data };
+        clonedData.price = +value
+        setData(clonedData)
     }
     return (
         <div>
@@ -27,17 +42,21 @@ const NewHousing = () => {
                         className="input-50"
                         defaultValue={1000}
                         prefix="$"
-                        onValueChange={(value, name) => console.log(value, name)}
+                        onValueChange={handlePriceChange}
                     />
                     <br />
 
-                    <label className="format-form">Address</label>
-                    <Autocomplete
-                        apiKey="test_pub_7451af19963513e13b1e76a5e974d51"
-                        onSelection={handleAddressSelect}
-                        delaySearch={true}
-                        className="input-50"
-                    />
+                    <Row>
+                        <Col sm={1}><label className="format-form">Address</label></Col>
+                        <Col sm={11}>
+                            <Autocomplete
+                                apiKey="test_pub_7451af19963513e13b1e76a5e974d51"
+                                onSelection={handleAddressSelect}
+                                delaySearch={true}
+                                className="input-50"
+                            />
+                        </Col>
+                    </Row>
                     <br />
 
                     <label className="format-form">Number of bed:</label>
