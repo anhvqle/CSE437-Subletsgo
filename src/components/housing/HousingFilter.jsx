@@ -1,4 +1,14 @@
+import { useState } from "react";
+import Slider from '@material-ui/core/Slider';
+
 const HousingFilter = () => {
+
+    const [priceRange, setPriceRange] =  useState([1,1000]);
+  
+    const priceRangeSelector = (e, newPrice) => {
+        setPriceRange(newPrice);
+    };
+
     return (
         <div>
             <div>
@@ -6,7 +16,17 @@ const HousingFilter = () => {
                     <input className="checkbox" type="checkbox" /> Exclude my post
                 </label>
                 <p className="filter-header">Price</p>
-                <input type="range" min="1" max="100" value="50" className="slider" id="myRange"></input>
+                <Slider
+                    value={priceRange}
+                    onChange={priceRangeSelector}
+                    valueLabelDisplay="auto"
+                    defaultValue={[1, 1000]}
+                    min={1}
+                    max={1000}
+                />
+                <div>
+                    Current Selected Price Range: ${priceRange[0]} - ${priceRange[1]}
+                </div>
                 <p />
 
                 <p className="filter-header">Bedroom(s)</p>
