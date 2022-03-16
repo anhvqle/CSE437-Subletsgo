@@ -97,31 +97,31 @@ const NewHousing = () => {
                         <option value="3">3</option>
                         <option value="4+">4+</option>
                     </select>
-                    <br />
-                    <br />
 
+                    <div className="sub-heading">Amenities available</div>
+                    <br />
                     <label className="format-form"> Air Conditioning</label>
-                    <input type="checkbox" data-type="airConditioner" onChange={onCheckboxChange} />
+                    <input type="checkbox" className="checkbox" data-type="airConditioner" onChange={onCheckboxChange} />
                     <br />
                     <br />
 
                     <label className="format-form" > In Unit Washer & Dryer</label>
-                    <input type="checkbox" data-type="laundry" onChange={onCheckboxChange} />
+                    <input type="checkbox" className="checkbox" data-type="laundry" onChange={onCheckboxChange} />
                     <br />
                     <br />
 
                     <label className="format-form" > Balcony</label>
-                    <input type="checkbox" data-type="balcony" onChange={onCheckboxChange} />
+                    <input type="checkbox" className="checkbox" data-type="balcony" onChange={onCheckboxChange} />
                     <br />
                     <br />
 
                     <label className="format-form"> Pet Friendly</label>
-                    <input type="checkbox" data-type="petFriendly" onChange={onCheckboxChange} />
+                    <input type="checkbox" className="checkbox" data-type="petFriendly" onChange={onCheckboxChange} />
                     <br />
                     <br />
 
                     <label className="format-form"> Elevator</label>
-                    <input type="checkbox" data-type="elevator" onChange={onCheckboxChange} />
+                    <input type="checkbox" className="checkbox" data-type="elevator" onChange={onCheckboxChange} />
                     <br />
                     <br />
 
