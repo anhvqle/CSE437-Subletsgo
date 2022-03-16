@@ -4,9 +4,16 @@ import { Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../../context/UserContext"
 import CurrencyInput from 'react-currency-input-field';
+import { Autocomplete } from '@lob/react-address-autocomplete'
 
 const NewHousing = () => {
+    const [address, setAddress] = useState({})
 
+
+    const handleAddressSelect = (selected) => {
+        console.log(selected);
+        setAddress(selected);
+    }
     return (
         <div>
             <NavigationBar />
@@ -24,12 +31,13 @@ const NewHousing = () => {
                     />
                     <br />
 
-                    <label className="format-form">Phone Number</label>
-                    <input className="input-50" type="text" name="phone_number" required />
-                    <br />
-
-                    <label className="format-form">Email</label>
-                    <input className="input-50" type="text" name="email" required />
+                    <label className="format-form">Address</label>
+                    <Autocomplete
+                        apiKey="test_pub_7451af19963513e13b1e76a5e974d51"
+                        onSelection={handleAddressSelect}
+                        delaySearch={true}
+                        className="input-50"
+                    />
                     <br />
 
                     <label className="format-form">Number of bed:</label>
@@ -54,22 +62,22 @@ const NewHousing = () => {
                         <option value="6+">6+</option>
                     </select>
                     <br />
+                    <br />
 
-
-                    <label className="format-form">Class Standing:</label>
-                    <select defaultValue={"Freshman"} name="class_standing" >
-                        <option value="freshman">Freshman</option>
-                        <option value="sophomore">Sophomore</option>
-                        <option value="junior">Junior</option>
-                        <option value="senior">Senior</option>
-                        <option value="master">Master Student</option>
-                        <option value="PhD">PhD Student</option>
-                    </select>
+                    <label htmlFor="heating" className="format-form"> Heating</label>
+                    <input type="checkbox" id="heating" name="heating" value="heating" />
                     <br />
                     <br />
 
-                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-                    <label for="vehicle1"> I have a bike</label>
+                    <label htmlFor="cooling" className="format-form"> Cooling</label>
+                    <input type="checkbox" id="cooling" name="cooling" value="cooling" />
+                    <br />
+                    <br />
+
+                    <label htmlFor="parking" className="format-form"> Parking</label>
+                    <input type="checkbox" id="parking" name="parking" value="parking" />
+                    <br />
+                    <br />
 
                 </div>
 
