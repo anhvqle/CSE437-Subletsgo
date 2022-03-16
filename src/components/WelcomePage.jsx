@@ -28,7 +28,9 @@ function WelcomePage() {
                         <p className="sub-heading">
                             <i>We help finding aparments easier.</i>
                         </p>
-                        <a className="link-styling" href="/login"><button type="button" className="btn btn-light rounded-corner rounded-pill">Login to get started</button></a>
+                        <a className="link-styling" href="/login">
+                            <button type="button" className="btn btn-light rounded-corner rounded-pill">Login to get started</button>
+                        </a>
                     </div>
                     <div className="col">
                         <img src={apartment} alt="logo" id="welcome-img" width="50" />

@@ -12,9 +12,6 @@ const HousingFilter = () => {
     return (
         <div>
             <div>
-                <label className="filter-option">
-                    <input className="checkbox" type="checkbox" /> Exclude my post
-                </label>
                 <p className="filter-header">Price</p>
                 <Slider
                     value={priceRange}

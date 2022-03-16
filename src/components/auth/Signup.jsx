@@ -20,13 +20,14 @@ function Signup() {
 
     const [firstName, setFirstName] = useState("");
     const [lastName, setlastName] = useState("");
+    const [phoneNumber, setPhoneNumber] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const [signupMsg, setSignupMsg] = useState("");
 
     const handleSignupUser = async () => {
-        const res = await signup(firstName, lastName, email, password);
+        const res = await signup(firstName, lastName, phoneNumber, email, password);
 
         setSignupMsg(res.data.message);
 
@@ -48,6 +49,10 @@ function Signup() {
 
                 <p className="antiquewhite">Last Name
                     <input className="input-100" type="text" onChange={(e) => { setlastName(e.target.value); }} name="last_name" placeholder="Last Name" required />
+                </p>
+
+                <p className="antiquewhite">Phone Number
+                    <input className="input-100" type="text" onChange={(e) => { setPhoneNumber(e.target.value); }} name="phone_number" placeholder="Phone Number" required />
                 </p>
 
                 <p className="antiquewhite">Email*

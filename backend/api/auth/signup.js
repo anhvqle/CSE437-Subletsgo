@@ -6,7 +6,12 @@ const bcrypt = require("bcryptjs");
 const router = express.Router();
 
 router.post("/signup", async (req, res) => {
-    const { firstName, lastName, email, password } = req.body;
+    const { firstName, lastName, phoneNumber, email, password } = req.body;
+
+    var phoneno = /^\d{10}$/;
+    if(!phoneno.test(phoneNumber)) {
+        return res.status(409).json({ message: "* Phone number should only contain integer numbers." });
+    }
 
     if (password.length < 8) {
         return res.status(409).json({ message: "* Your password must contain at least 8 characters." });
@@ -33,7 +38,7 @@ router.post("/signup", async (req, res) => {
         return res.status(409).json({ message: "User with email already exists!" });
     }
 
-    const newUser = new User({ firstName, lastName, email, password });
+    const newUser = new User({ firstName, lastName, phoneNumber, email, password });
 
     const savedUser = await newUser.save().catch((err) => {
         res.status(500).json({ message: "Cannot register user at the moment!" });

@@ -163,3 +163,9 @@
 .filter-header {
     font-size: 1.5em;
 }
+
+.rounded-corner {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: bold;
+    padding: 2% 10% 2% 10%;
+}
