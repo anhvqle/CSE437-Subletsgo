@@ -5,12 +5,12 @@ import './App.css';
 import Login from "./components/auth/Login";
 import Signup from "./components/auth/Signup";
 import WelcomePage from "./components/WelcomePage";
-import Housing from "./components/Housing";
+import Housing from "./components/housing/Housing";
 import Tenant from "./components/tenant/Tenant";
 import NewTenantListing from "./components/tenant/NewTenantListing";
 import UserContext from "./context/UserContext"
 import jwtDecode from "jwt-decode";
-import Marketplace from "./components/Marketplace";
+import Marketplace from "./components/marketplace/Marketplace";
 
 
 function App() {

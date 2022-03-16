@@ -1,9 +1,9 @@
-import NavigationBar from "./NavigationBar";
-import UserContext from "../context/UserContext";
+import NavigationBar from "../NavigationBar";
+import UserContext from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
 
-function Marketplace() {
+function Housing() {
     let navigate = useNavigate();
     let { currUser, setUser } = useContext(UserContext);
 
@@ -19,10 +19,10 @@ function Marketplace() {
         <div>
             <NavigationBar />
             <div className="center">
-                <p>This is Marketplace Page</p>
+                <p>This is Housing Page</p>
             </div>
         </div>
     )
 }
 
-export default Marketplace;
+export default Housing;
