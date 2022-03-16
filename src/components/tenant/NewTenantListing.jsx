@@ -8,27 +8,15 @@ import UserContext from "../../context/UserContext"
 function NewTenantListing() {
     let navigate = useNavigate();
     let { currUser } = useContext(UserContext);
+    let { firstName, lastName, email: userEmail, id: userId } = currUser
 
-    const [fullName, setFullName] = useState(`${currUser.firstName} ${currUser.lastName}`);
+    const [fullName, setFullName] = useState(`${firstName} ${lastName}`);
     const [phoneNumber, setPhoneNumber] = useState("");
-    const [email, setEmail] = useState(currUser.email);
+    const [email, setEmail] = useState(userEmail);
     const [gender, setGender] = useState("male");
     const [campus, setCampus] = useState("");
     const [classStanding, setClassStanding] = useState("freshman");
     const [description, setDescription] = useState("");
-    const [userId, setUserId] = useState(null);
-
-    useEffect(() => {
-        (async () => {
-            if (!currUser) {
-                navigate("/");
-            }
-            let { firstName, lastName, email: userEmail, id } = currUser
-            setFullName(`${firstName} ${lastName}`);
-            setEmail(userEmail)
-            setUserId(id)
-        })();
-    }, [currUser]);
 
     const handleCreateTenantListing = async () => {
         console.log(fullName, phoneNumber, email, gender, campus, classStanding, description);
