@@ -10,25 +10,41 @@ const NewHousing = () => {
     const [data, setData] = useState({
         price: 1000,
         address: {},
-        numBed: 1,
-        numBath: 1,
-        heating: false,
-        cooling: false,
-        parking: false
+        numBed: "1",
+        numBath: "1",
+        airConditioner: false,
+        laundry: false,
+        balcony: false,
+        petFriendly: false,
+        elevator: false
     });
 
 
     const handleAddressSelect = (selected) => {
         const clonedData = { ...data };
         clonedData.address = selected
-        setData(clonedData)
+        setData(clonedData);
     }
 
     const handlePriceChange = (value, name) => {
         const clonedData = { ...data };
         clonedData.price = +value
-        setData(clonedData)
+        setData(clonedData);
     }
+
+    const onOptionChange = (e) => {
+        const clonedData = { ...data };
+        clonedData[e.target.dataset.type] = e.target.value;
+        setData(clonedData);
+    }
+
+    const onCheckboxChange = (e) => {
+        const clonedData = { ...data };
+        clonedData[e.target.dataset.type] = e.target.checked;
+        setData(clonedData);
+    }
+
+
     return (
         <div>
             <NavigationBar />
@@ -60,41 +76,47 @@ const NewHousing = () => {
                     <br />
 
                     <label className="format-form">Number of bed:</label>
-                    <select defaultValue={"1"} name="gender">
+                    <select defaultValue={"1"} data-type="numBed" onChange={onOptionChange}>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6+">6+</option>
+                        <option value="4+">4+</option>
                     </select>
                     <br />
                     <br />
 
                     <label className="format-form">Number of bath:</label>
-                    <select defaultValue={"1"} name="gender">
+                    <select defaultValue={"1"} data-type="numBath" onChange={onOptionChange}>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6+">6+</option>
+                        <option value="4+">4+</option>
                     </select>
                     <br />
                     <br />
 
-                    <label htmlFor="heating" className="format-form"> Heating</label>
-                    <input type="checkbox" id="heating" name="heating" value="heating" />
+                    <label className="format-form"> Air Conditioning</label>
+                    <input type="checkbox" data-type="airConditioner" onChange={onCheckboxChange} />
                     <br />
                     <br />
 
-                    <label htmlFor="cooling" className="format-form"> Cooling</label>
-                    <input type="checkbox" id="cooling" name="cooling" value="cooling" />
+                    <label className="format-form" > In Unit Washer & Dryer</label>
+                    <input type="checkbox" data-type="laundry" onChange={onCheckboxChange} />
                     <br />
                     <br />
 
-                    <label htmlFor="parking" className="format-form"> Parking</label>
-                    <input type="checkbox" id="parking" name="parking" value="parking" />
+                    <label className="format-form" > Balcony</label>
+                    <input type="checkbox" data-type="balcony" onChange={onCheckboxChange} />
+                    <br />
+                    <br />
+
+                    <label className="format-form"> Pet Friendly</label>
+                    <input type="checkbox" data-type="petFriendly" onChange={onCheckboxChange} />
+                    <br />
+                    <br />
+
+                    <label className="format-form"> Elevator</label>
+                    <input type="checkbox" data-type="elevator" onChange={onCheckboxChange} />
                     <br />
                     <br />
 
