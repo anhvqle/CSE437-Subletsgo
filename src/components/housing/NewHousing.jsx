@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import UserContext from "../../context/UserContext"
 import CurrencyInput from 'react-currency-input-field';
 import { Autocomplete } from '@lob/react-address-autocomplete'
+import createHousing from "../../data/housing"
 
 const NewHousing = () => {
     const [data, setData] = useState({
@@ -42,6 +43,10 @@ const NewHousing = () => {
         const clonedData = { ...data };
         clonedData[e.target.dataset.type] = e.target.checked;
         setData(clonedData);
+    }
+
+    const submitNewHousing = () => {
+        createHousing(data)
     }
 
 
@@ -122,7 +127,7 @@ const NewHousing = () => {
 
                 </div>
 
-                <button className="main_button" id="signup_btn">POST</button>
+                <button className="main_button" id="signup_btn" onClick={submitNewHousing}>POST</button>
             </Container>
         </div>
     )
