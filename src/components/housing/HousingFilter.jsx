@@ -75,10 +75,30 @@ const HousingFilter = () => {
                 </div>
                 <p />
 
-                <p className="filter-header">Washer/Dryer</p>
+                <p className="filter-header">Amenities</p>
                 <div className="ui">
                     <label className="filter-option">
-                        <input className="checkbox" type="checkbox" id="in-unit" />  In unit
+                        <input className="checkbox" type="checkbox" id="air-conditioning" />  Air Conditioning
+                    </label>
+                </div>
+                <div className="ui">
+                    <label className="filter-option">
+                        <input className="checkbox" type="checkbox" id="in-unit-washer-dryer" />  In Unit Washer & Dryer
+                    </label>
+                </div>
+                <div className="ui">
+                    <label className="filter-option">
+                        <input className="checkbox" type="checkbox" id="patio-balcony" />  Patio/Balcony
+                    </label>
+                </div>
+                <div className="ui">
+                    <label className="filter-option">
+                        <input className="checkbox" type="checkbox" id="pet-friendly" />  Pet-friendly
+                    </label>
+                </div>
+                <div className="ui">
+                    <label className="filter-option">
+                        <input className="checkbox" type="checkbox" id="elevator" />  Elevator
                     </label>
                 </div>
             </div>
