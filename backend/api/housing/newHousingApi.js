@@ -3,6 +3,7 @@ const router = express.Router();
 
 const Housing = require('../../models/housing')
 const HousingAddress = require('../../models/housingAddress')
+const HousingImage = require('../../models/housingImage')
 const imageUpload = require("../../services/imagesService")
 
 router.post("/newHousingApi", async (req, res) => {
@@ -14,22 +15,34 @@ router.post("/newHousingApi", async (req, res) => {
     const savedHousing = await newHousing.save().catch((err) => {
         res.status(500).json({ message: err.message });
     });
+    let housingId = savedHousing.id;
     if (address && JSON.stringify(address) !== "{}") {
         console.log("Tryinggg this");
-        const newHousingAddress = new HousingAddress({ ...address.value, label: address.label, housingId: savedHousing.id })
+        const newHousingAddress = new HousingAddress({ ...address.value, label: address.label, housingId })
         await newHousingAddress.save().catch((err) => {
             res.status(500).json({ message: err.message });
         });
     }
-
     if (images.length > 0) {
-        let bucket = `subletsgo/housing-image/${savedHousing.id}`
+        let bucket = `subletsgo/housing-image/${housingId}`
         let promiseUpload = images.map((base64Image, index) => {
             return imageUpload(index.toString(), base64Image, bucket);
         });
         try {
-            let bucketData = await Promise.all(promiseUpload);
-            console.log(bucketData);
+            let imagesData = await Promise.all(promiseUpload);
+            let promiseImagesData = imagesData.map((img, index) => {
+                let { ETag: etag, Location: location, Key: key, Bucket: bucket } = img
+                const newHousingImage = new HousingImage({
+                    order: index,
+                    etag,
+                    location,
+                    key,
+                    bucket,
+                    housingId
+                })
+                return newHousingImage.save();
+            })
+            await Promise.all(promiseImagesData)
         } catch (err) {
             res.status(501).json({ message: err.message });
         }
