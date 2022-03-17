@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 const FileUploader = ({ imgHeight, getImagesOnChange, getImagesBase64OnChange }) => {
     const [images, setImages] = useState([]);
     const [imageURLs, setImageURLs] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const fetchImages = async () => {
@@ -12,18 +13,21 @@ const FileUploader = ({ imgHeight, getImagesOnChange, getImagesBase64OnChange })
             const unresolvedImages = images.map((file) => convertToBase64(file));
             if (getImagesBase64OnChange) getImagesBase64OnChange(await Promise.all(unresolvedImages));
             if (getImagesOnChange) getImagesOnChange(images);
+            setLoading(false);
         }
         fetchImages()
     }, [images, getImagesBase64OnChange, getImagesOnChange])
 
     const onImageChange = async (e) => {
-        setImages([...e.target.files])
+        setImages([...e.target.files]);
+        setImageURLs([]);
+        setLoading(true);
     }
 
     return (<>
         <input type="file" multiple accept="image/*" onChange={onImageChange} />
         <br /> <br />
-        {imageURLs.map((imgSrc, index) => (
+        {loading ? <p>Loading...</p> : imageURLs.map((imgSrc, index) => (
             <img key={`img-${index}`} src={imgSrc} alt={index} height={imgHeight} />
         ))}
     </>)
