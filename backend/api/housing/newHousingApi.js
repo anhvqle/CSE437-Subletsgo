@@ -23,14 +23,17 @@ router.post("/newHousingApi", async (req, res) => {
         });
     }
 
-    let bucket = `subletsgo/housing-image/${savedHousing.id}`
-    let promiseUpload = images.map((base64Image, index) => {
-        return imageUpload(index.toString(), base64Image, bucket);
-    });
-    try {
-        await Promise.all(promiseUpload);
-    } catch (err) {
-        res.status(501).json({ message: err.message });
+    if (images.length > 0) {
+        let bucket = `subletsgo/housing-image/${savedHousing.id}`
+        let promiseUpload = images.map((base64Image, index) => {
+            return imageUpload(index.toString(), base64Image, bucket);
+        });
+        try {
+            let bucketData = await Promise.all(promiseUpload);
+            console.log(bucketData);
+        } catch (err) {
+            res.status(501).json({ message: err.message });
+        }
     }
 
     if (!res.headersSent && savedHousing) {

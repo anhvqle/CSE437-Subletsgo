@@ -1,5 +1,5 @@
 const AWS = require('aws-sdk');
-AWS.config.update({ region: 'us-west-2' });
+AWS.config.update({ accessKeyId: process.env.AWS_ACCESS_KEY, secretAccessKey: process.env.AWS_SECRET_KEY, region: 'us-west-2' });
 var credentials = new AWS.SharedIniFileCredentials({ profile: 'default' });
 AWS.config.credentials = credentials;
 const s3 = new AWS.S3({});
@@ -28,8 +28,7 @@ async function upload(imageName, base64Image, bucket) {
     } catch (err) {
         throw err;
     }
-
-    return data.Location;
+    return data;
 }
 /**
  * @description Promise an upload to S3
