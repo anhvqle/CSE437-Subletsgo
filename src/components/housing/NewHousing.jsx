@@ -6,11 +6,16 @@ import UserContext from "../../context/UserContext"
 import CurrencyInput from 'react-currency-input-field';
 import { Autocomplete } from '@lob/react-address-autocomplete'
 import createHousing from "../../data/housing"
+import FileUploader from "../FileUploader";
 
 const NewHousing = () => {
+    let { currUser } = useContext(UserContext);
+    let { id: userId } = currUser
     const [data, setData] = useState({
+        userId,
         price: 1000,
         address: {},
+        images: [],
         numBed: "1",
         numBath: "1",
         airConditioner: false,
@@ -49,6 +54,12 @@ const NewHousing = () => {
         createHousing(data)
     }
 
+    const getImagesBase64OnChange = (images) => {
+        const clonedData = { ...data };
+        clonedData.images = images;
+        setData(clonedData);
+    }
+
 
     return (
         <div>
@@ -78,6 +89,11 @@ const NewHousing = () => {
                             />
                         </Col>
                     </Row>
+                    <br />
+
+                    <label className="format-form">Images</label>
+                    <FileUploader imgHeight="300" getImagesBase64OnChange={getImagesBase64OnChange} />
+                    <br />
                     <br />
 
                     <label className="format-form">Number of bed:</label>

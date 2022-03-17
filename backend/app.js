@@ -13,7 +13,8 @@ const app = express();
 
 // app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+// Limit 100 mb?
+app.use(express.json({ limit: 1024 * 1024 * 100 }));
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
