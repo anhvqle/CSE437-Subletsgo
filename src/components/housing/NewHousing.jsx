@@ -11,6 +11,8 @@ import FileUploader from "../FileUploader";
 const NewHousing = () => {
     let { currUser } = useContext(UserContext);
     let { id: userId } = currUser
+    let navigate = useNavigate();
+    let [errMessage, setErrMessage] = useState(null);
     const [data, setData] = useState({
         userId,
         price: 1000,
@@ -50,8 +52,14 @@ const NewHousing = () => {
         setData(clonedData);
     }
 
-    const submitNewHousing = () => {
-        createHousing(data)
+    const submitNewHousing = async () => {
+        const response = await createHousing(data)
+        if (response.status <= 299) {
+            setErrMessage(null);
+            navigate("/");
+        } else {
+            setErrMessage(response.data?.message);
+        }
     }
 
     const getImagesBase64OnChange = (images) => {
@@ -144,6 +152,7 @@ const NewHousing = () => {
                 </div>
 
                 <button className="main_button" id="signup_btn" onClick={submitNewHousing}>POST</button>
+                {errMessage && <p className="error">Error: {errMessage}</p>}
             </Container>
         </div>
     )

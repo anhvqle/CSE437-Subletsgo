@@ -6,7 +6,6 @@ const HousingAddress = require('../../models/housingAddress')
 const imageUpload = require("../../services/imagesService")
 
 router.post("/newHousingApi", async (req, res) => {
-    // console.log(req.body.images[0]);
     let { images } = req.body;
     delete req.body.images;
     let { address } = req.body
