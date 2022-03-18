@@ -17,4 +17,21 @@ const createHousing = async (data) => {
     }
 };
 
+const getAllHousing = async () => {
+    console.log("Helloooooo");
+    const url = "/api/getAllHousingApi";
+
+    let axiosConfig = {
+        withCredentials: true,
+        headers: { "Content-Type": "application/json" }
+    }
+
+    try {
+        return await axios.get(url, axiosConfig);
+    } catch (err) {
+        return err.response;
+    }
+}
+
+export { getAllHousing };
 export default createHousing;

@@ -31,5 +31,6 @@ const HousingImage = sequelize.define("housing-image", {
     }
 });
 
+// 1-to-n
 HousingImage.belongsTo(Housing);
 module.exports = HousingImage
