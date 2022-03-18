@@ -7,6 +7,7 @@ const getTenantListingApi = require('./tenant/getTenantListingApi');
 const deleteTenantListingApi = require('./tenant/deleteTenantListingApi');
 
 const newHousingApi = require("./housing/newHousingApi")
+const getAllHousingApi = require("./housing/getAllHousingApi")
 
 const router = express.Router();
 
@@ -18,5 +19,6 @@ router.use(getTenantListingApi);
 router.use(deleteTenantListingApi);
 
 router.use(newHousingApi);
+router.use(getAllHousingApi);
 
 module.exports = router;
