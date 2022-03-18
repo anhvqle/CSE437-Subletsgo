@@ -5,7 +5,7 @@ import './App.css';
 import Login from "./components/auth/Login";
 import Signup from "./components/auth/Signup";
 import WelcomePage from "./components/WelcomePage";
-import Housing from "./components/housing/Housing";
+import HousingPage from "./components/housing/HousingPage";
 import Tenant from "./components/tenant/Tenant";
 import NewTenantListing from "./components/tenant/NewTenantListing";
 import UserContext from "./context/UserContext";
@@ -28,7 +28,7 @@ function App() {
                     <Route path="/login" exact element={<Login />} />
                     <Route path="/signup" exact element={<Signup />} />
                     <Route path="/housing" exact element={
-                        currUser ? <Housing /> : <Navigate replace to="/" />
+                        currUser ? <HousingPage /> : <Navigate replace to="/" />
                     } />
                     <Route path="/tenant" exact element={
                         currUser ? <Tenant /> : <Navigate replace to="/" />

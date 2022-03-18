@@ -6,7 +6,7 @@ import HousingListing from './HousingListing';
 import HousingFilter from './HousingFilter';
 import { getAllHousing } from "../../data/housing"
 
-function Housing() {
+function HousingPage() {
     let { currUser, setUser } = useContext(UserContext);
     const [housings, setHousings] = useState([]);
     let [errMessage, setErrMessage] = useState(null);
@@ -54,4 +54,4 @@ function Housing() {
     )
 }
 
-export default Housing;
+export default HousingPage;

@@ -1,4 +1,4 @@
-function HousingListing() {
+const HousingListing = ({ housings }) => {
 
     return (
         <div>
