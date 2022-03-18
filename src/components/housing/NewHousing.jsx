@@ -128,32 +128,27 @@ const NewHousing = () => {
                     <div className="sub-heading">Amenities available</div>
                     <br />
                     <label className="format-form"> Air Conditioning</label>
-                    <input type="checkbox margin-top-50" className="checkbox" data-type="airConditioner" onChange={onCheckboxChange} />
-                    <br />
+                    <input type="checkbox" className="checkbox margin-top-2" data-type="airConditioner" onChange={onCheckboxChange} />
                     <br />
 
                     <label className="format-form" > In Unit Washer & Dryer</label>
-                    <input type="checkbox margin-top-50" className="checkbox" data-type="laundry" onChange={onCheckboxChange} />
-                    <br />
+                    <input type="checkbox" className="checkbox margin-top-2" data-type="laundry" onChange={onCheckboxChange} />
                     <br />
 
                     <label className="format-form" > Balcony</label>
-                    <input type="checkbox margin-top-50" className="checkbox" data-type="balcony" onChange={onCheckboxChange} />
-                    <br />
+                    <input type="checkbox" className="checkbox margin-top-2" data-type="balcony" onChange={onCheckboxChange} />
                     <br />
 
                     <label className="format-form"> Pet Friendly</label>
-                    <input type="checkbox margin-top-50" className="checkbox" data-type="petFriendly" onChange={onCheckboxChange} />
-                    <br />
+                    <input type="checkbox" className="checkbox margin-top-2" data-type="petFriendly" onChange={onCheckboxChange} />
                     <br />
 
                     <label className="format-form"> Elevator</label>
-                    <input type="checkbox margin-top-50" className="checkbox" data-type="elevator" onChange={onCheckboxChange} />
-                    <br />
+                    <input type="checkbox" className="checkbox margin-top-2" data-type="elevator" onChange={onCheckboxChange} />
                     <br />
 
                 </div>
-                {loading && <div class="loader"></div>}
+                {loading && <div className="middle-spinner loader"></div>}
                 {errMessage && <p className="error">Error: {errMessage}</p>}
                 <button className="main_button" id="signup_btn" onClick={submitNewHousing}>POST</button>
             </Container>
