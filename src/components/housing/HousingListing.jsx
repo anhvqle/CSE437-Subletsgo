@@ -2,11 +2,12 @@ import { Container, Row, Col } from "react-bootstrap";
 
 const HousingListing = ({ housings }) => {
     const Housing = ({ housing }) => {
+        const defaultImg = "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930";
         return (
             <Container fluid>
                 <Row className="layout">
                     <Col sm={4}>
-                        <img src={housing["housing-images"]} alt={housing.id} width="200" />
+                        <img src={housing["housing-images"] || defaultImg} alt={housing.id} width="200" />
                     </Col>
                     <Col sm={8}>
                         <div className="medium_size"><strong>Price: </strong> {housing.price}</div>
