@@ -8,10 +8,11 @@ import WelcomePage from "./components/WelcomePage";
 import Housing from "./components/housing/Housing";
 import Tenant from "./components/tenant/Tenant";
 import NewTenantListing from "./components/tenant/NewTenantListing";
-import UserContext from "./context/UserContext"
+import UserContext from "./context/UserContext";
 import jwtDecode from "jwt-decode";
 import Marketplace from "./components/marketplace/Marketplace";
-import NewHousing from "./components/housing/NewHousing"
+import NewHousing from "./components/housing/NewHousing";
+import NewMarketplaceListing from "./components/marketplace/newMarketplaceListing";
 
 
 function App() {
@@ -40,6 +41,9 @@ function App() {
                     } />
                     <Route path="/newHousing" exact element={
                         currUser ? <NewHousing /> : <Navigate replace to="/" />
+                    } />
+                    <Route path="/newMarketplaceListing" exact element={
+                        currUser ? <NewMarketplaceListing /> : <Navigate replace to="/" />
                     } />
                 </Routes>
             </Router>
