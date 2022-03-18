@@ -26,7 +26,7 @@ const MarketplaceFilter = () => {
                 </div>
                 <p />
 
-                <p className="filter-header">Filter</p>
+                <p className="filter-header">Categories:</p>
                 <div className="ui">
                     <label className="filter-option">
                         <input className="checkbox" type="checkbox" id="apparel" />  Apparel
@@ -70,6 +70,28 @@ const MarketplaceFilter = () => {
                 <div className="ui">
                     <label className="filter-option">
                         <input className="checkbox" type="checkbox" id="toy-game" />  Toys & Games
+                    </label>
+                </div>
+                <div className="ui">
+                    <label className="filter-option">
+                        <input className="checkbox" type="checkbox" id="other" />  Other
+                    </label>
+                </div>
+                <p />
+                <p className="filter-header">Conditions:</p>
+                <div className="ui">
+                    <label className="filter-option">
+                        <input className="checkbox" type="checkbox" id="mew" />  New
+                    </label>
+                </div>
+                <div className="ui">
+                    <label className="filter-option">
+                        <input className="checkbox" type="checkbox" id="used" />  Used
+                    </label>
+                </div>
+                <div className="ui">
+                    <label className="filter-option">
+                        <input className="checkbox" type="checkbox" id="refurbished" />  Refurbished
                     </label>
                 </div>
             </div>
