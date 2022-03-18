@@ -1,18 +1,17 @@
 import NavigationBar from "../NavigationBar";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../../context/UserContext"
 import CurrencyInput from 'react-currency-input-field';
 import newMarketplaceListing from "../../data/marketplace";
-import createHousing from "../../data/housing";
 import FileUploader from "../FileUploader";
 
 const NewMarketplaceListing = () => {
 
     let navigate = useNavigate();
     let { currUser } = useContext(UserContext);
-    let { firstName, lastName, email: userEmail, id: userId, phoneNumber: userPhoneNumber } = currUser;
+    let { id: userId } = currUser;
 
     let [errMessage, setErrMessage] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -23,6 +22,7 @@ const NewMarketplaceListing = () => {
         category: "apparel",
         condition: "new",
         description: "stateDescription",
+        images: [],
     });
 
     const handlePriceChange = (value) => {
@@ -53,6 +53,12 @@ const NewMarketplaceListing = () => {
         } else {
             setErrMessage(response.data?.message);
         }
+    }
+
+    const getImagesBase64OnChange = (images) => {
+        const clonedData = { ...data };
+        clonedData.images = images;
+        setData(clonedData);
     }
 
     return (
@@ -99,10 +105,15 @@ const NewMarketplaceListing = () => {
 
                     <label className="format-form">Description</label>
                     <input className="input-50" type="text" onChange={(e) => { handleDescriptionChange(e.target.value); }} name="description" required />
+                    <br />
+
+                    <label className="format-form">Images</label>
+                    <FileUploader imgHeight="300" getImagesBase64OnChange={getImagesBase64OnChange} />
 
                 </div>
                 {loading && <div className="middle-spinner loader"></div>}
-                <button className="main_button" id="signup_btn" onClick={submitNewMarketplaceListing}>POST</button>
+                <p></p>
+                <button type="button" className="btn btn-primary main_button" id="new_marketplace_btn" onClick={submitNewMarketplaceListing}>POST</button>
                 {errMessage && <p className="error">Error: {errMessage}</p>}
             </Container>
         </div>

@@ -1,30 +1,34 @@
 const Sequelize = require('sequelize');
 const sequelize = require("../database/database");
-const User = require("./user")
+const Marketplace = require("./marketplace")
 
-const Marketplace = sequelize.define("marketplace", {
+const MarketplaceImage = sequelize.define("marketplace-image", {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true,
     },
-    price: {
+    order: {
         type: Sequelize.INTEGER,
         allowNull: false,
     },
-    category: {
+    etag: {
         type: Sequelize.STRING,
         allowNull: false,
     },
-    condition: {
+    location: {
         type: Sequelize.STRING,
         allowNull: false,
     },
-    description: {
+    key: {
         type: Sequelize.STRING,
         allowNull: false,
     },
+    bucket: {
+        type: Sequelize.STRING,
+        allowNull: false,
+    }
 });
 
-module.exports = Marketplace
+module.exports = MarketplaceImage

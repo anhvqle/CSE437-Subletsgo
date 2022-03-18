@@ -1,5 +1,5 @@
 import NavigationBar from "../NavigationBar";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../../context/UserContext"
@@ -150,7 +150,7 @@ const NewHousing = () => {
                 </div>
                 {loading && <div className="middle-spinner loader"></div>}
                 {errMessage && <p className="error">Error: {errMessage}</p>}
-                <button className="main_button" id="signup_btn" onClick={submitNewHousing}>POST</button>
+                <button type="button" className="btn btn-primary main_button" id="new_housing_btn" onClick={submitNewHousing}>POST</button>
             </Container>
         </div>
     )

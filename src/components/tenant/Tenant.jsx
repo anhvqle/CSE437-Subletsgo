@@ -9,10 +9,13 @@ import UserContext from "../../context/UserContext"
 function Tenant() {
     const [tenants, setTenants] = useState([]);
     let { currUser, setUser } = useContext(UserContext);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         (async () => {
+            setLoading(true);
             let tenants = await getTenant();
+            setLoading(false);
             setTenants(tenants.data.tenants);
         })();
     }, []);
@@ -74,6 +77,7 @@ function Tenant() {
     return (
         <div>
             <NavigationBar />
+            {loading && <div className="middle-spinner loader"></div>}
             <Container fluid>
                 <Row className="layout">
                     <Col sm={8}></Col>

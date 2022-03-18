@@ -1,5 +1,5 @@
 import NavigationBar from "../NavigationBar";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Container } from "react-bootstrap";
 import createTenantList from '../../data/tenant';
 import { useNavigate } from "react-router-dom";
@@ -80,7 +80,7 @@ function NewTenantListing() {
 
                 </div>
 
-                <button onClick={handleCreateTenantListing} className="main_button" id="signup_btn">POST</button>
+                <button onClick={handleCreateTenantListing}  type="button" className="btn btn-primary main_button" id="new_tenant_btn">POST</button>
             </Container>
         </div>
     )
