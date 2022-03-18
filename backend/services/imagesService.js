@@ -1,5 +1,5 @@
 const AWS = require('aws-sdk');
-AWS.config.update({ accessKeyId: process.env.AWS_ACCESS_KEY, secretAccessKey: process.env.AWS_SECRET_KEY, region: 'us-west-2' });
+AWS.config.update({ accessKeyId: process.env.AWS_ACCESS_KEY, secretAccessKey: process.env.AWS_SECRET_KEY, region: 'us-east-2' });
 const s3 = new AWS.S3({});
 
 // Citation: https://raz-levy.medium.com/upload-images-to-aws-s3-using-react-js-and-node-js-express-server-bc15b959372c
@@ -11,7 +11,7 @@ const s3 = new AWS.S3({});
  * @param type Image type
  * @return string S3 image URL or error accordingly
  */
-async function upload(imageName, base64Image, bucket) {
+async function imageUpload(imageName, base64Image, bucket) {
     const params = {
         Bucket: bucket,
         Key: imageName,
@@ -45,4 +45,12 @@ function promiseUpload(params) {
     });
 }
 
-module.exports = upload;
+const getImageUrl = (imageName, bucket) => {
+    return s3.getSignedUrl('getObject', {
+        Bucket: bucket,
+        Key: imageName,
+        // Expires: 60 * 60
+    })
+}
+
+module.exports = { imageUpload, getImageUrl };

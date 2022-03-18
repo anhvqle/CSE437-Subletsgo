@@ -38,6 +38,5 @@ const Tenant = sequelize.define("tenant", {
         allowNull: true,
     },
 });
-Tenant.belongsTo(User);
 
 module.exports = Tenant

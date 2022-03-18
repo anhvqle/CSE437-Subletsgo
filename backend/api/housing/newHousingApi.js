@@ -4,7 +4,7 @@ const router = express.Router();
 const Housing = require('../../models/housing')
 const HousingAddress = require('../../models/housingAddress')
 const HousingImage = require('../../models/housingImage')
-const imageUpload = require("../../services/imagesService")
+const { imageUpload } = require("../../services/imagesService")
 
 router.post("/newHousingApi", async (req, res) => {
     let { images } = req.body;
@@ -17,7 +17,6 @@ router.post("/newHousingApi", async (req, res) => {
     });
     let housingId = savedHousing.id;
     if (address && JSON.stringify(address) !== "{}") {
-        console.log("Tryinggg this");
         const newHousingAddress = new HousingAddress({ ...address.value, label: address.label, housingId })
         await newHousingAddress.save().catch((err) => {
             res.status(500).json({ message: err.message });

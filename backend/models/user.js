@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const sequelize = require("../database/database");
+const Housing = require("./housing");
 
 const User = sequelize.define("user", {
     id: {
@@ -29,5 +30,5 @@ const User = sequelize.define("user", {
         allowNull: false,
     },
 });
-
+User.hasMany(Housing)
 module.exports = User

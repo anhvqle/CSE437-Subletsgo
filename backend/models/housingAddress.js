@@ -31,6 +31,4 @@ const HousingAddress = sequelize.define("housing-address", {
     }
 });
 
-// 1-to-1
-HousingAddress.belongsTo(Housing);
 module.exports = HousingAddress

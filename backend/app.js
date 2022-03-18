@@ -3,6 +3,7 @@ const cors = require("cors");
 const api = require("./api");
 let dotenv = require('dotenv');
 require("./models/user");
+require("./models/assocations");
 
 const app = express();
 

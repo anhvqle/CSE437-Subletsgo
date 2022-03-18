@@ -1,6 +1,8 @@
 const Sequelize = require('sequelize');
 const sequelize = require("../database/database");
 const User = require("./user")
+const HousingAddress = require("./housingAddress")
+const HousingImage = require("./housingImage")
 
 const Housing = sequelize.define("housings", {
     id: {
@@ -43,5 +45,4 @@ const Housing = sequelize.define("housings", {
     },
 });
 
-Housing.belongsTo(User);
 module.exports = Housing
