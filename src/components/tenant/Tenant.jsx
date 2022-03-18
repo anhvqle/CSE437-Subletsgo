@@ -82,7 +82,7 @@ function Tenant() {
                     <Col sm={8}></Col>
                     <Col>
                         <button type="button" className="center btn btn-primary monospace rounded-pill">
-                            <a className="link-styling" href="/newTenantListing">Create a Listing</a>
+                            <a className="link-styling" href="/newTenantListing">Create a Tenant Listing</a>
                         </button>
                     </Col>
                 </Row>
