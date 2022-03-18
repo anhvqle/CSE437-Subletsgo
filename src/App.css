@@ -114,6 +114,11 @@
     padding-bottom: 1%;
 }
 
+.medium_size {
+    font-size: 1rem;
+    padding-bottom: 0.5%;
+}
+
 .auth_button { 
     background: linear-gradient(135deg, #f0c15d 0%, #f42c90 100%);
     color: antiquewhite;
