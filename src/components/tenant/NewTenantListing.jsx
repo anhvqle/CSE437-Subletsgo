@@ -19,7 +19,6 @@ function NewTenantListing() {
     const [description, setDescription] = useState("");
 
     const handleCreateTenantListing = async () => {
-        console.log(fullName, phoneNumber, email, gender, campus, classStanding, description);
         const res = await createTenantList(fullName, phoneNumber, email, gender, campus, classStanding, description, userId);
 
         if (parseInt(res.status) === 200) {

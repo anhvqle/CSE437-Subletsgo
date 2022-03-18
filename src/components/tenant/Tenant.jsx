@@ -40,11 +40,8 @@ function Tenant() {
 
     const deleteTenantFrontEnd = (id) => {
         let clonedTenant = tenants.filter((t) => {
-            console.log(t.id);
-            console.log({ id });
             return +t.id !== +id
         });
-        console.log();
         setTenants(clonedTenant)
     }
     const filterTennants = () => {

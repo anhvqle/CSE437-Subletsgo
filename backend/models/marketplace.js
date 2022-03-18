@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const sequelize = require("../database/database");
 const User = require("./user")
 
-const Marketplace = sequelize.define("housings", {
+const Marketplace = sequelize.define("marketplace", {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -18,6 +18,10 @@ const Marketplace = sequelize.define("housings", {
         allowNull: false,
     },
     condition: {
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
+    description: {
         type: Sequelize.STRING,
         allowNull: false,
     },

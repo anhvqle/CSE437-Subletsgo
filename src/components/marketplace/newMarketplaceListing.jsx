@@ -4,15 +4,55 @@ import { Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../../context/UserContext"
 import CurrencyInput from 'react-currency-input-field';
-import createHousing from "../../data/housing"
+import newMarketplaceListing from "../../data/marketplace";
+import createHousing from "../../data/housing";
 import FileUploader from "../FileUploader";
 
 const NewMarketplaceListing = () => {
 
-    const [description, setDescription] = useState("");
+    let navigate = useNavigate();
+    let { currUser } = useContext(UserContext);
+    let { firstName, lastName, email: userEmail, id: userId, phoneNumber: userPhoneNumber } = currUser;
+
+    let [errMessage, setErrMessage] = useState(null);
+    const [loading, setLoading] = useState(false);
+
+    const [data, setData] = useState({
+        userId,
+        price: 0,
+        category: "apparel",
+        condition: "new",
+        description: "stateDescription",
+    });
+
+    const handlePriceChange = (value) => {
+        const clonedData = { ...data };
+        clonedData.price = +value;
+        setData(clonedData);
+    }
+
+    const handleOptionChange = (e) => {
+        const clonedData = { ...data };
+        clonedData[e.target.dataset.type] = e.target.value;
+        setData(clonedData);
+    }
+
+    const handleDescriptionChange = (description) => {
+        const clonedData = { ...data };
+        clonedData.description = description;
+        setData(clonedData);
+    }
 
     const submitNewMarketplaceListing = async () => {
-        console.log("submit");
+        setLoading(true);
+        const response = await newMarketplaceListing(data);
+        setLoading(false);
+        if (response.status <= 299) {
+            setErrMessage(null);
+            navigate("/marketplace");
+        } else {
+            setErrMessage(response.data?.message);
+        }
     }
 
     return (
@@ -26,13 +66,14 @@ const NewMarketplaceListing = () => {
                         name="housing-price"
                         placeholder="Please enter housing price"
                         className="input-50"
-                        defaultValue={1000}
+                        defaultValue={0}
                         prefix="$"
+                        onValueChange={handlePriceChange}
                     />
                     <br />
 
                     <label className="format-form">Categories:</label>
-                    <select defaultValue={"apparel"} data-type="numBath">
+                    <select defaultValue={"apparel"} data-type="category" onChange={handleOptionChange}>
                         <option value="apparel">Apparel</option>
                         <option value="vehicle">Vehicles</option>
                         <option value="furniture">Furniture</option>
@@ -48,7 +89,7 @@ const NewMarketplaceListing = () => {
                     <br />
 
                     <label className="format-form">Conditions:</label>
-                    <select defaultValue={"new"} data-type="numBath">
+                    <select defaultValue={"new"} data-type="condition" onChange={handleOptionChange}>
                         <option value="new">New</option>
                         <option value="used">Used</option>
                         <option value="refurbished">Refurbished</option>
@@ -57,10 +98,12 @@ const NewMarketplaceListing = () => {
                     <br />
 
                     <label className="format-form">Description</label>
-                    <input className="input-50" type="text" onChange={(e) => { setDescription(e.target.value); }} name="description" required />
+                    <input className="input-50" type="text" onChange={(e) => { handleDescriptionChange(e.target.value); }} name="description" required />
 
                 </div>
+                {loading && <div className="middle-spinner loader"></div>}
                 <button className="main_button" id="signup_btn" onClick={submitNewMarketplaceListing}>POST</button>
+                {errMessage && <p className="error">Error: {errMessage}</p>}
             </Container>
         </div>
     )
