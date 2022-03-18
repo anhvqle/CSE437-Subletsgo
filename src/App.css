@@ -1,14 +1,22 @@
-.auth-navbar {
+.nav-item {
+    font-size: 1.5em;
+    color: rgb(161, 161, 161);
+    margin-right: 15%;
+    text-decoration: none;
+}
+
+.nav-item:hover, .active, .active:hover {
     font-size: 1.5em;
     color: white;
     margin-right: 15%;
+    text-decoration: none;
 }
 
 #responsive-navbar-nav {
     margin-left: -6% !important;
 }
 
-.auth-navbar-title {
+.navbar-title {
     font-size: 2em;
     color: white;
 }
