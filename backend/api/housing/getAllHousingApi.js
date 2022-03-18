@@ -22,16 +22,12 @@ router.get("/getAllHousingApi", async (req, res) => {
         });
         // console.log(housings);
         housings = housings.map((housing) => {
-            console.log("---------------------------------");
-            console.log(housing['housing-images']);
-            console.log(housing['housing-images'].id);
             if (housing['housing-images'].id) {
                 let { key: imageName, bucket } = housing['housing-images'];
                 housing['housing-images'] = getImageUrl(imageName, bucket);
             } else {
                 housing['housing-images'] = null;
             }
-            console.log(housing);
             housing['housing-address'] = housing['housing-address'].id ? housing['housing-address'] : null;
             return housing
         })
