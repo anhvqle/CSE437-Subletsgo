@@ -26,6 +26,7 @@ const NewHousing = () => {
         petFriendly: false,
         elevator: false
     });
+    const [loading, setLoading] = useState(false);
 
 
     const handleAddressSelect = (selected) => {
@@ -53,7 +54,9 @@ const NewHousing = () => {
     }
 
     const submitNewHousing = async () => {
-        const response = await createHousing(data)
+        setLoading(true);
+        const response = await createHousing(data);
+        setLoading(false);
         if (response.status <= 299) {
             setErrMessage(null);
             navigate("/");
@@ -150,9 +153,9 @@ const NewHousing = () => {
                     <br />
 
                 </div>
-
-                <button className="main_button" id="signup_btn" onClick={submitNewHousing}>POST</button>
+                {loading && <div class="loader"></div>}
                 {errMessage && <p className="error">Error: {errMessage}</p>}
+                <button className="main_button" id="signup_btn" onClick={submitNewHousing}>POST</button>
             </Container>
         </div>
     )

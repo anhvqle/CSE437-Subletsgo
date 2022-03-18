@@ -27,7 +27,7 @@ const FileUploader = ({ imgHeight, getImagesOnChange, getImagesBase64OnChange })
     return (<>
         <input type="file" multiple accept="image/*" onChange={onImageChange} />
         <br /> <br />
-        {loading ? <p>Loading...</p> : imageURLs.map((imgSrc, index) => (
+        {loading ? <div class="loader"></div> : imageURLs.map((imgSrc, index) => (
             <img key={`img-${index}`} src={imgSrc} alt={index} height={imgHeight} />
         ))}
     </>)
