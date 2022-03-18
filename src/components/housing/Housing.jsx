@@ -16,7 +16,7 @@ function Housing() {
                     <Col sm={8}></Col>
                     <Col>
                         <button type="button" className="center btn btn-primary monospace rounded-pill">
-                            <a className="link-styling" href="/newHousing">Create a Housing Listing</a>
+                            <a className="link-styling" href="/newHousing">Create New Housing Listing</a>
                         </button>
                     </Col>
                 </Row>
