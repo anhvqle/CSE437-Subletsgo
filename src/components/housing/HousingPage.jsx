@@ -1,6 +1,6 @@
 import NavigationBar from "../NavigationBar";
 import UserContext from "../../context/UserContext";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, } from "react";
 import { Container, Col, Row } from "react-bootstrap";
 import HousingListing from './HousingListing';
 import HousingFilter from './HousingFilter';
@@ -27,6 +27,12 @@ function HousingPage() {
         })();
     }, []);
 
+    let initialPriceRange = [1, 1000];
+    if (housings.length > 0) {
+        const prices = housings.map((housing) => housing.price);
+        initialPriceRange = [Math.min(...prices), Math.max(...prices)]
+    }
+
     return (
         <div>
             <NavigationBar />
@@ -46,7 +52,7 @@ function HousingPage() {
                         <HousingListing housings={housings} />
                     </Col>
                     <Col>
-                        <HousingFilter />
+                        <HousingFilter initialPriceRange={initialPriceRange} />
                     </Col>
                 </Row>
             </Container>

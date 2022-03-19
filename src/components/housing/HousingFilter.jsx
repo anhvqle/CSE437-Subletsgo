@@ -1,28 +1,27 @@
 import { useState } from "react";
 import Slider from '@material-ui/core/Slider';
 
-const HousingFilter = () => {
+const HousingFilter = ({ initialPriceRange }) => {
 
-    const [priceRange, setPriceRange] =  useState([1,1000]);
-  
+    const [priceRange, setPriceRange] = useState([null, null]);
     const priceRangeSelector = (e, newPrice) => {
         setPriceRange(newPrice);
     };
-
+    const defaultValue = priceRange[0] ? priceRange : initialPriceRange;
     return (
         <div>
             <div>
                 <p className="filter-header">Price</p>
                 <Slider
-                    value={priceRange}
+                    value={defaultValue}
                     onChange={priceRangeSelector}
                     valueLabelDisplay="auto"
-                    defaultValue={[1, 1000]}
-                    min={1}
-                    max={1000}
+                    defaultValue={defaultValue}
+                    min={initialPriceRange[0]}
+                    max={initialPriceRange[1]}
                 />
                 <div>
-                    Current Selected Price Range: ${priceRange[0]} - ${priceRange[1]}
+                    Current Selected Price Range: ${priceRange[0] || initialPriceRange[0]} - ${priceRange[1] || initialPriceRange[1]}
                 </div>
                 <p />
 
