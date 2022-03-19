@@ -18,7 +18,6 @@ const createHousing = async (data) => {
 };
 
 const getAllHousing = async () => {
-    console.log("Helloooooo");
     const url = "/api/getAllHousingApi";
 
     let axiosConfig = {
