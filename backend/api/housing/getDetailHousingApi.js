@@ -24,7 +24,7 @@ router.get("/getDetailHousingApi/:id", async (req, res) => {
 
         housingDetailsAdjusted['housing-address'] = housingDetailsAdjusted["housing-address"].id ? housingDetailsAdjusted['housing-address'] : null;
         if (housingDetailsAdjusted["housing-images"].id === null) {
-            housingDetailsAdjusted["housing-images"] = null;
+            housingDetailsAdjusted["housing-images"] = [];
             res.status(200).json(housingDetailsAdjusted);
         }
 
