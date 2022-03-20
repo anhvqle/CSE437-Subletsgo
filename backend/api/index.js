@@ -21,9 +21,11 @@ router.use(deleteTenantListingApi);
 // Housing API
 const newHousingApi = require("./housing/newHousingApi")
 const getAllHousingApi = require("./housing/getAllHousingApi")
+const getDetailHousingApi = require("./housing/getDetailHousingApi");
 
 router.use(newHousingApi);
 router.use(getAllHousingApi);
+router.use(getDetailHousingApi);
 
 // Marketplace API
 const newMarketplaceApi = require("./marketplace/newMarketplaceApi");

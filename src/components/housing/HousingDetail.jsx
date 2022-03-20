@@ -17,7 +17,6 @@ const HousingDetail = () => {
                 setHousingDetail(response.data);
             }
             else {
-                console.log(response);
                 setErrMessage(response.data?.message || response.data)
             }
         }

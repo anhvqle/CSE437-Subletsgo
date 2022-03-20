@@ -33,7 +33,7 @@ const getAllHousing = async () => {
 }
 
 const getDetailHousing = async (houseingId) => {
-    const url = "/api/getDetailHousingApi";
+    const url = `/api/getDetailHousingApi/${houseingId}`;
 
     let axiosConfig = {
         withCredentials: true,
