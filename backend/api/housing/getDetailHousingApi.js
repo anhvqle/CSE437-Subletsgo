@@ -4,6 +4,7 @@ const router = express.Router();
 const Housing = require('../../models/housing')
 const HousingAddress = require('../../models/housingAddress')
 const HousingImage = require('../../models/housingImage')
+const User = require("../../models/user");
 const { getImageUrl } = require("../../services/imagesService")
 
 router.get("/getDetailHousingApi/:id", async (req, res) => {
@@ -14,7 +15,8 @@ router.get("/getDetailHousingApi/:id", async (req, res) => {
             nest: true,
             include: [
                 { model: HousingAddress, required: false },
-                { model: HousingImage, required: false }
+                { model: HousingImage, required: false },
+                { model: User }
             ],
             where: {
                 id: housingId

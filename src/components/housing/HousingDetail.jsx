@@ -4,6 +4,18 @@ import { getDetailHousing } from "../../data/housing"
 import { Container } from "react-bootstrap";
 import NavigationBar from "../NavigationBar"
 
+const Contact = ({ user }) => {
+    const { firstName, lastName, phoneNumber, email } = user;
+    const fullname = `${firstName} ${lastName}`
+    return (<div>
+        <hr />
+        <h2>Contact Information</h2>
+        <div className="medium_size"><strong>Full name: </strong> {fullname}</div>
+        <div className="medium_size"><strong>Phone Number: </strong> {phoneNumber}</div>
+        <div className="medium_size"><strong>Email: </strong> {email}</div>
+    </div>)
+}
+
 const HousingDetail = () => {
     let { id: housingId } = useParams();
     let [housingDetail, setHousingDetail] = useState(null);
@@ -32,22 +44,27 @@ const HousingDetail = () => {
                 {loading && <div className="middle-spinner loader"></div>}
                 {
                     housingDetail &&
-                    <div>
-                        <div className="medium_size"><strong>Price: </strong> {housingDetail.price}$</div>
-                        <div className="medium_size"><strong>Number of Bed: </strong> {housingDetail.numBed}</div>
-                        <div className="medium_size"><strong>Number of Bath:</strong> {housingDetail.numBath}</div>
-                        <div className="medium_size"><strong>Air Conditioner:</strong> {housingDetail.airConditioner === 1 ? "Yes" : "No"}</div>
-                        <div className="medium_size"><strong>Laundry:</strong> {housingDetail.laundry === 1 ? "Yes" : "No"}</div>
-                        <div className="medium_size"><strong>Balcony:</strong> {housingDetail.balcony === 1 ? "Yes" : "No"}</div>
-                        <div className="medium_size"><strong>Pet Friendly:</strong> {housingDetail.petFriendly === 1 ? "Yes" : "No"}</div>
-                        <div className="medium_size"><strong>Elevator:</strong> {housingDetail.elevator === 1 ? "Yes" : "No"}</div>
-                        {housingDetail['housing-address'] && <div className="medium_size"><strong>Address:</strong> {housingDetail['housing-address'].label}</div>}
-                        {housingDetail['housing-images'].map((imgSrc, index) => (
-                            <img key={`img-${index}`} src={imgSrc} alt={index} height="300" />
-                        ))}
-                    </div>
+                    <>
+                        <div>
+                            <h2>Housing details</h2>
+                            <div className="medium_size"><strong>Price: </strong> {housingDetail.price}$</div>
+                            <div className="medium_size"><strong>Number of Bed: </strong> {housingDetail.numBed}</div>
+                            <div className="medium_size"><strong>Number of Bath:</strong> {housingDetail.numBath}</div>
+                            <div className="medium_size"><strong>Air Conditioner:</strong> {housingDetail.airConditioner === 1 ? "Yes" : "No"}</div>
+                            <div className="medium_size"><strong>Laundry:</strong> {housingDetail.laundry === 1 ? "Yes" : "No"}</div>
+                            <div className="medium_size"><strong>Balcony:</strong> {housingDetail.balcony === 1 ? "Yes" : "No"}</div>
+                            <div className="medium_size"><strong>Pet Friendly:</strong> {housingDetail.petFriendly === 1 ? "Yes" : "No"}</div>
+                            <div className="medium_size"><strong>Elevator:</strong> {housingDetail.elevator === 1 ? "Yes" : "No"}</div>
+                            {housingDetail['housing-address'] && <div className="medium_size"><strong>Address:</strong> {housingDetail['housing-address'].label}</div>}
+                            {housingDetail['housing-images'].map((imgSrc, index) => (
+                                <img key={`img-${index}`} src={imgSrc} alt={index} height="300" />
+                            ))}
+                        </div>
+                        <Contact user={housingDetail.user} />
+                    </>
                 }
             </Container>
+
         </>
     )
 }
