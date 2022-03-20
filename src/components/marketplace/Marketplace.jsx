@@ -1,13 +1,11 @@
 import NavigationBar from "../NavigationBar";
-import UserContext from "../../context/UserContext";
-import { useContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Container, Col, Row } from "react-bootstrap";
 import MarketplaceListing from './MarketplaceListing';
 import MarketplaceFilter from './MarketplaceFilter';
 import { getAllMarketplace } from "../../data/marketplace";
 
 function Marketplace() {
-    let { currUser, setUser } = useContext(UserContext);
     let [errMessage, setErrMessage] = useState(null);
     const [loading, setLoading] = useState(false);
 

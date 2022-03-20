@@ -3,6 +3,7 @@ import apartment from '../images/apartment.png';
 import UserContext from "../context/UserContext";
 import { useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { Container, Col, Row } from "react-bootstrap";
 
 function WelcomePage() {
     let navigate = useNavigate();
@@ -19,9 +20,9 @@ function WelcomePage() {
     return (
         <header>
             <NavigationBar />
-            <div className="introduction container">
-                <div className="row">
-                    <div className="col">
+            <Container className="introduction">
+                <Row>
+                    <Col>
                         <div className="heading">
                             A Convenient Way to Connect Landlords, Tanenets, & Students
                         </div>
@@ -31,12 +32,12 @@ function WelcomePage() {
                         <a className="link-styling" href="/login">
                             <button type="button" className="btn btn-light rounded-corner rounded-pill">Login to get started</button>
                         </a>
-                    </div>
-                    <div className="col">
+                    </Col>
+                    <Col>
                         <img src={apartment} alt="logo" id="welcome-img" width="50" />
-                    </div>
-                </div>
-            </div>
+                    </Col>
+                </Row>
+            </Container>
         </header>
     )
 }
