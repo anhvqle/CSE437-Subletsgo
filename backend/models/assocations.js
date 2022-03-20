@@ -8,11 +8,11 @@ const MarketplaceImage = require("./marketplaceImage");
 
 
 // 1-to-1
-HousingAddress.belongsTo(Housing);
+HousingAddress.belongsTo(Housing, { onDelete: 'cascade', hooks: true });
 Housing.hasOne(HousingAddress, { onDelete: 'cascade', hooks: true });
 
 // 1-to-n
-HousingImage.belongsTo(Housing);
+HousingImage.belongsTo(Housing, { onDelete: 'cascade', hooks: true });
 Housing.hasMany(HousingImage, { onDelete: 'cascade', hooks: true });
 
 // 1-to-n
