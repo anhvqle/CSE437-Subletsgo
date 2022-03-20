@@ -19,6 +19,7 @@ const HousingListing = ({ housings }) => {
                         <div className="medium_size"><strong>Pet Friendly:</strong> {housing.petFriendly === 1 ? "Yes" : "No"}</div>
                         <div className="medium_size"><strong>Elevator:</strong> {housing.elevator === 1 ? "Yes" : "No"}</div>
                         {housing['housing-address'] && <div className="medium_size"><strong>Address:</strong> {housing['housing-address'].label}</div>}
+                        <a href={`housing/${housing.id}`}>See more</a>
                     </Col>
                 </Row>
                 <hr />

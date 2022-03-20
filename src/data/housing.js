@@ -32,5 +32,20 @@ const getAllHousing = async () => {
     }
 }
 
-export { getAllHousing };
+const getDetailHousing = async (houseingId) => {
+    const url = "/api/getDetailHousingApi";
+
+    let axiosConfig = {
+        withCredentials: true,
+        headers: { "Content-Type": "application/json" }
+    }
+
+    try {
+        return await axios.get(url, axiosConfig);
+    } catch (err) {
+        return err.response;
+    }
+}
+
+export { getAllHousing, getDetailHousing };
 export default createHousing;
