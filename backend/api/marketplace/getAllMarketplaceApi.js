@@ -17,7 +17,7 @@ router.get("/getAllMarketplaceApi", async (req, res) => {
                         order: 0
                     }
                 },
-                { model: User, attributes: ["firstName", "lastName"] }
+                { model: User }
             ]
         });
 
