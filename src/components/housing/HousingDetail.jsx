@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import UserContext from "../../context/UserContext"
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { getDetailHousing, deleteHousing } from "../../data/housing"
 import { Container, Button } from "react-bootstrap";
 import NavigationBar from "../NavigationBar"
@@ -24,6 +24,7 @@ const HousingDetail = () => {
     const [loading, setLoading] = useState(false);
     let [errMessage, setErrMessage] = useState(null);
     let [deleteErrMessage, setDeleteErrMessage] = useState(null);
+    let navigate = useNavigate();
     useEffect(() => {
         const fetchHousingDetail = async () => {
             setLoading(true);
@@ -45,6 +46,7 @@ const HousingDetail = () => {
         let response = await deleteHousing(housingId)
         if (response.status <= 299 || response.status === 304) {
             setDeleteErrMessage(null);
+            navigate("/");
         }
         else {
             setDeleteErrMessage(response.data?.message || response.data)

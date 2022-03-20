@@ -23,17 +23,17 @@ const AuthNavigationBar = () => {
                     <Nav className="me-auto"></Nav>
                     {
                         currUser && (<Nav className="me-auto d-flex flex-row">
-                            <NavLink className={({isActive}) => isActive ? "active" : "nav-item"} to="/tenant">Tenant</NavLink>
-                            <NavLink className={({isActive}) => isActive ? "active" : "nav-item"} to="/housing">Housing</NavLink>
-                            <NavLink className={({isActive}) => isActive ? "active" : "nav-item"} to="/marketplace">Marketplace</NavLink>
+                            <NavLink className={({ isActive }) => isActive ? "active" : "nav-item"} to="/tenant">Tenant</NavLink>
+                            <NavLink className={({ isActive }) => isActive ? "active" : "nav-item"} to="/housing">Housing</NavLink>
+                            <NavLink className={({ isActive }) => isActive ? "active" : "nav-item"} to="/marketplace">Marketplace</NavLink>
                         </Nav>)
                     }
                     {
                         currUser
                             ? <button className="btn btn-outline-light btn-lg" onClick={logoutClicked}>Logout</button>
                             : (<Nav>
-                                <NavLink className={({isActive}) => isActive ? "active" : "nav-item"} to="/signup">Signup</NavLink>
-                                <NavLink className={({isActive}) => isActive ? "active" : "nav-item"} to="/login">Login</NavLink>
+                                <NavLink className={({ isActive }) => isActive ? "active" : "nav-item"} to="/signup">Signup</NavLink>
+                                <NavLink className={({ isActive }) => isActive ? "active" : "nav-item"} to="/login">Login</NavLink>
                             </Nav>)
                     }
                 </Navbar.Collapse>
