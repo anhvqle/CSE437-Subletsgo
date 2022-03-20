@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import UserContext from "../../context/UserContext"
 import { useParams } from "react-router-dom";
-import { getDetailHousing } from "../../data/housing"
-import { Container } from "react-bootstrap";
+import { getDetailHousing, deleteHousing } from "../../data/housing"
+import { Container, Button } from "react-bootstrap";
 import NavigationBar from "../NavigationBar"
 
 const Contact = ({ user }) => {
@@ -17,10 +18,12 @@ const Contact = ({ user }) => {
 }
 
 const HousingDetail = () => {
+    let { currUser } = useContext(UserContext);
     let { id: housingId } = useParams();
     let [housingDetail, setHousingDetail] = useState(null);
     const [loading, setLoading] = useState(false);
     let [errMessage, setErrMessage] = useState(null);
+    let [deleteErrMessage, setDeleteErrMessage] = useState(null);
     useEffect(() => {
         const fetchHousingDetail = async () => {
             setLoading(true);
@@ -36,6 +39,19 @@ const HousingDetail = () => {
         }
         fetchHousingDetail()
     }, [housingId])
+
+    const onDeleteClicked = async () => {
+        const housingId = housingDetail?.id;
+        let response = await deleteHousing(housingId)
+        if (response.status <= 299 || response.status === 304) {
+            setDeleteErrMessage(null);
+        }
+        else {
+            setDeleteErrMessage(response.data?.message || response.data)
+        }
+    }
+    const isOwner = currUser.id == housingDetail?.user?.id
+
     return (
         <>
             <NavigationBar />
@@ -59,6 +75,12 @@ const HousingDetail = () => {
                             {housingDetail['housing-images'].map((imgSrc, index) => (
                                 <img key={`img-${index}`} src={imgSrc} alt={index} height="300" />
                             ))}
+                            <br />
+                            <br />
+                            {isOwner && <>
+                                {deleteErrMessage && <p className="error">Error: {deleteErrMessage}</p>}
+                                <Button className="btn-danger" onClick={onDeleteClicked}>Delete this listing</Button>
+                            </>}
                         </div>
                         <Contact user={housingDetail.user} />
                     </>

@@ -47,5 +47,20 @@ const getDetailHousing = async (houseingId) => {
     }
 }
 
-export { getAllHousing, getDetailHousing };
+const deleteHousing = async (houseingId) => {
+    const url = `/api/deleteHousingApi/${houseingId}`;
+
+    let axiosConfig = {
+        withCredentials: true,
+        headers: { "Content-Type": "application/json" }
+    }
+
+    try {
+        return await axios.delete(url, axiosConfig);
+    } catch (err) {
+        return err.response;
+    }
+}
+
+export { getAllHousing, getDetailHousing, deleteHousing };
 export default createHousing;
