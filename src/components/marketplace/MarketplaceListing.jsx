@@ -29,7 +29,6 @@ const MarketplaceListing = ({ marketplaces }) => {
                         <div className="medium_size"><strong>Category: </strong> {capitalizeFirstLetter(marketplace.category)}</div>
                         <div className="medium_size"><strong>Condition:</strong> {capitalizeFirstLetter(marketplace.condition)}</div>
                         <div className="medium_size"><strong>Description:</strong> {marketplace.description}</div>
-                        <div className="medium_size"><strong>Description:</strong> {marketplace.description}</div>
                     </Col>
                     <Col sm={4}>
                         <div className="medium_size"><Owner owner={marketplace.user} /></div>
