@@ -55,7 +55,7 @@ function Signup() {
                     <input className="input-100" type="text" onChange={(e) => { setPhoneNumber(e.target.value); }} name="phone_number" placeholder="Phone Number" required />
                 </p>
 
-                <p className="antiquewhite">Email*
+                <p className="antiquewhite">WUSTL Email*
                     <input className="input-100" type="text" onChange={(e) => { setEmail(e.target.value); }} name="email" placeholder="Email" required />
                 </p>
 

@@ -8,6 +8,10 @@ const router = express.Router();
 router.post("/signup", async (req, res) => {
     const { firstName, lastName, phoneNumber, email, password } = req.body;
 
+    if (!email.includes("@wustl.edu")) {
+        return res.status(409).json({ message: "* Please use your WUSTL email to sign up." });
+    }
+
     var phoneno = /^\d{10}$/;
     if (!phoneno.test(phoneNumber)) {
         return res.status(409).json({ message: "* Phone number should only contain 10 integer numbers." });
@@ -30,18 +34,18 @@ router.post("/signup", async (req, res) => {
 
     const alreadyExistsUser = await User.findOne({ where: { email } }).catch(
         (err) => {
-            console.log("Error: ", err);
+            return res.status(409).json({ message: "* This e-mail address is already in use." });
         }
     );
 
     if (alreadyExistsUser) {
-        return res.status(409).json({ message: "User with email already exists!" });
+        return res.status(409).json({ message: "* User with email already exists!" });
     }
 
     const newUser = new User({ firstName, lastName, phoneNumber, email, password });
 
     const savedUser = await newUser.save().catch((err) => {
-        res.status(500).json({ message: "Cannot register user at the moment!" });
+        res.status(500).json({ message: "* Cannot register user at the moment!" });
     });
 
     if (savedUser) {
