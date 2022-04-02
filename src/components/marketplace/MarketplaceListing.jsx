@@ -4,13 +4,18 @@ function capitalizeFirstLetter(s) {
     return s.charAt(0).toUpperCase() + s.slice(1)
 }
 
+function formatPhoneNumber(s) {
+    let text = s.toString()
+    return "(" + text.substring(0, 3) + ") " + text.substring(3, 6) + "-" + text.substring(6, 10);
+}
+
 const Owner = ({ owner }) => {
     const { firstName, lastName, phoneNumber, email } = owner;
 
     return (<div>
         <h5>Posted By:</h5>
         <div className="medium_size"><strong>Full name: </strong> {`${firstName} ${lastName}`}</div>
-        <div className="medium_size"><strong>Phone Number: </strong> {phoneNumber}</div>
+        <div className="medium_size"><strong>Phone Number: </strong> {formatPhoneNumber(phoneNumber)}</div>
         <div className="medium_size"><strong>Email: </strong> {email}</div>
     </div>)
 }

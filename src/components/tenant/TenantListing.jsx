@@ -8,6 +8,11 @@ function capitalizeFirstLetter(s) {
     return s.charAt(0).toUpperCase() + s.slice(1)
 }
 
+function formatPhoneNumber(s) {
+    let text = s.toString()
+    return "(" + text.substring(0, 3) + ") " + text.substring(3, 6) + "-" + text.substring(6, 10);
+}
+
 function getCampusName(s) {
     if (s === "danforth")
         s = capitalizeFirstLetter(s);
@@ -47,7 +52,7 @@ function TenantListing(props) {
                                             <div className="bigger_size">
                                                 <i className={t.gender === 'other' ? "fw-bold fa fa-genderless" : `fw-bold fa fa-${t.gender}`}></i> {capitalizeFirstLetter(t.gender)}
                                             </div>
-                                            <div className="bigger_size"><i className="fw-bold fa fa-phone"></i> {t.phoneNumber}</div>
+                                            <div className="bigger_size"><i className="fw-bold fa fa-phone"></i> {formatPhoneNumber(t.phoneNumber)}</div>
                                             <div className="bigger_size"><i className="fw-bold fa fa-envelope"></i> {t.email}</div>
                                         </Col>
                                         {
