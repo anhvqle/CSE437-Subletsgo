@@ -39,7 +39,7 @@ const HousingListing = ({ housings }) => {
         {housings.slice(begin, end).map(housing => <Housing housing={housing} key={housing.id} />)}
         <div className="center">
             <ReactPaginate
-                pageCount={housings.length / PAGE_SIZE}
+                pageCount={Math.ceil(housings.length / PAGE_SIZE)}
                 pageRangeDisplayed={1}
                 marginPagesDisplayed={5}
                 breakClassName={"page-item"}
