@@ -47,6 +47,7 @@ function Login() {
                 </p>
 
                 <button onClick={handleLoginUser} className="center auth_button" id="signup_btn">Login</button>
+                <br />
                 <p className="message">{loginMsg}</p>
             </div>
         </div>
