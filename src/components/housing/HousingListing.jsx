@@ -1,6 +1,13 @@
 import { Container, Row, Col } from "react-bootstrap";
+import { useState } from "react";
+import ReactPaginate from "react-paginate";
 
 const HousingListing = ({ housings }) => {
+    const [page, setPage] = useState(1);
+    const PAGE_SIZE = 5;
+    const begin = (page - 1) * PAGE_SIZE;
+    const end = Math.min(housings.length, begin + PAGE_SIZE);
+
     const Housing = ({ housing }) => {
         const defaultImg = "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930";
         return (
@@ -28,7 +35,29 @@ const HousingListing = ({ housings }) => {
         )
     }
 
-    return housings.map(housing => <Housing housing={housing} key={housing.id} />)
+    return <>
+        {housings.slice(begin, end).map(housing => <Housing housing={housing} key={housing.id} />)}
+        <div className="center">
+            <ReactPaginate
+                pageCount={housings.length / PAGE_SIZE}
+                pageRangeDisplayed={1}
+                marginPagesDisplayed={5}
+                breakClassName={"page-item"}
+                breakLinkClassName={"page-link"}
+                containerClassName={"pagination"}
+                pageClassName={"page-item"}
+                pageLinkClassName={"page-link"}
+                previousClassName={"page-item"}
+                previousLinkClassName={"page-link"}
+                nextClassName={"page-item"}
+                nextLinkClassName={"page-link"}
+                activeClassName={"active"}
+                onPageChange={(page) => {
+                    setPage(page.selected + 1);
+                }}
+            />
+        </div>
+    </>
 }
 
 export default HousingListing;

@@ -14,7 +14,7 @@ let transporter = nodemailer.createTransport({
     }
 });
 
-function sendConfirmationEmail (email, firstName) {
+function sendConfirmationEmail(email, firstName) {
     let emailOptions = {
         from: process.env.EMAIL,
         to: email,
