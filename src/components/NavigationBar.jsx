@@ -14,6 +14,10 @@ const AuthNavigationBar = () => {
         navigate("/");
     }
 
+    const profileClicked = () => {
+        console.log("profile clicked");
+    }
+
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
@@ -30,7 +34,10 @@ const AuthNavigationBar = () => {
                     }
                     {
                         currUser
-                            ? <button className="btn btn-outline-light btn-lg" onClick={logoutClicked}>Logout</button>
+                            ? (<div>
+                                <button className="btn btn-dark btn-circle btn-xl" onClick={profileClicked}><i className="fa fa-user"></i></button>
+                                <button className="btn btn-outline-light btn-lg" onClick={logoutClicked}>Logout</button>
+                            </div>)
                             : (<Nav>
                                 <NavLink className={({ isActive }) => isActive ? "active" : "nav-item"} to="/signup">Signup</NavLink>
                                 <NavLink className={({ isActive }) => isActive ? "active" : "nav-item"} to="/login">Login</NavLink>
