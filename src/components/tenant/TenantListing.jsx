@@ -74,7 +74,7 @@ function TenantListing(props) {
                     })}
                 </ListGroup>
             ) : (
-                <div>There is currently no tenant listings available / match your search</div>
+                <div>There is currently no tenant listings available</div>
             )
             }
             <br />

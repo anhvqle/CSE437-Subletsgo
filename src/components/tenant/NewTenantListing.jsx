@@ -32,15 +32,15 @@ function NewTenantListing() {
             <Container>
                 <div className="margin-top">
                     <label className="format-form">Full Name</label>
-                    <input className="input-50" type="text" placeholder={`${currUser.firstName} ${currUser.lastName}`} value={fullName} onChange={(e) => { setFullName(e.target.value); }} name="full_name" required />
+                    <input disabled className="input-50" type="text" placeholder={`${currUser.firstName} ${currUser.lastName}`} value={fullName} onChange={(e) => { setFullName(e.target.value); }} name="full_name" required />
                     <br />
 
                     <label className="format-form">Phone Number</label>
-                    <input className="input-50" type="text" value={phoneNumber} onChange={(e) => { setPhoneNumber(e.target.value); }} name="phone_number" required />
+                    <input disabled className="input-50" type="text" value={phoneNumber} onChange={(e) => { setPhoneNumber(e.target.value); }} name="phone_number" required />
                     <br />
 
                     <label className="format-form">Email</label>
-                    <input className="input-50" type="text" placeholder={currUser.email} value={email} onChange={(e) => { setEmail(e.target.value); }} name="email" required />
+                    <input disabled className="input-50" type="text" placeholder={currUser.email} value={email} onChange={(e) => { setEmail(e.target.value); }} name="email" required />
                     <br />
 
                     <label className="format-form">Gender:</label>

@@ -223,3 +223,26 @@ h5 {
     line-height: 1.33;
     margin-right: 10px;
 }
+
+.title {
+    font-size: 30px;
+    margin-bottom: 30px;
+    text-decoration: none;
+}
+
+.title-styling {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.title-styling:hover {
+    color: steelBlue;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.steelBlue {
+    color: steelBlue !important;
+    cursor: pointer;
+}

@@ -15,7 +15,7 @@ const AuthNavigationBar = () => {
     }
 
     const profileClicked = () => {
-        console.log("profile clicked");
+        navigate("/profile");
     }
 
     return (

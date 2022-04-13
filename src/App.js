@@ -14,6 +14,7 @@ import Marketplace from "./components/marketplace/Marketplace";
 import NewHousing from "./components/housing/NewHousing";
 import NewMarketplaceListing from "./components/marketplace/newMarketplaceListing";
 import HousingDetail from "./components/housing/HousingDetail"
+import Profile from "./components/profile/Profile";
 
 function App() {
     let authtoken = localStorage.getItem('authtoken')
@@ -27,6 +28,9 @@ function App() {
                     <Route path="/" exact element={<WelcomePage />} />
                     <Route path="/login" exact element={<Login />} />
                     <Route path="/signup" exact element={<Signup />} />
+                    <Route path="/profile" exact element={
+                        currUser ? <Profile /> : <Navigate replace to="/" />
+                    } />
                     <Route path="/housing" exact element={
                         currUser ? <HousingPage /> : <Navigate replace to="/" />
                     } />
