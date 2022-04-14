@@ -6,10 +6,12 @@ const router = express.Router();
 const signupApi = require('./auth/signup');
 const loginApi = require('./auth/login');
 const forgetPasswordApi = require('./auth/forgetPassword');
+const resetPasswordApi = require('./auth/resetPassword');
 
 router.use(signupApi);
 router.use(loginApi);
 router.use(forgetPasswordApi);
+router.use(resetPasswordApi);
 
 // Tenant API
 const newTenantListingApi = require('./tenant/newTenantListingApi');

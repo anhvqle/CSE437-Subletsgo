@@ -48,7 +48,6 @@ router.post("/signup", async (req, res) => {
     }
 
     var numberRegularExpression = /^(?=.*[0-9])/;
-
     if (!numberRegularExpression.test(password)) {
         return res.status(409).json({ message: "* Your password must contain at least 1 number." });
     }

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 import forgetPassword from "../../data/forgetPassword";
 
-function Login() {
+function ForgetPassword() {
     let navigate = useNavigate();
     let { currUser, setUser } = useContext(UserContext);
     const [email, setEmail] = useState("");
@@ -46,4 +46,4 @@ function Login() {
     )
 }
 
-export default Login;
+export default ForgetPassword;

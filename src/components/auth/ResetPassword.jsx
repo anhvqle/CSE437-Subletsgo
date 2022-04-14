@@ -2,14 +2,28 @@ import NavigationBar from "../NavigationBar";
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../../context/UserContext";
+import resetPassword from "../../data/resetPassword";
 
 function ResetPassword() {
+    let navigate = useNavigate();
+    let { currUser, setUser } = useContext(UserContext);
     const [code, setCode] = useState("");
     const [password, setPassword] = useState("");
     const [resetPwMessage, setResetPwMessage] = useState("");
 
+    useEffect(() => {
+        (async () => {
+            if (currUser) {
+                navigate("/housing");
+            }
+        })();
+    }, [currUser]);
+
     const handleResetPassword = async () => {
         console.log(code, password);
+        const res = await resetPassword(code, password);
+
+        setResetPwMessage(res.data.message);
     }
 
     return (
