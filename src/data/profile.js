@@ -33,7 +33,7 @@ const getUserTenantListing = async (userId) => {
 }
 
 const getUserHousingListing = async (userId) => {
-    const url = `/api/getUserHousingListing/${userId}`;
+    const url = `/api/getUserHousingListingApi/${userId}`;
 
     let axiosConfig = {
         withCredentials: true,
@@ -48,7 +48,7 @@ const getUserHousingListing = async (userId) => {
 }
 
 const getUserMarketplaceListing = async (userId) => {
-    const url = `/api/getUserMarketplaceListing/${userId}`;
+    const url = `/api/getUserMarketplaceListingApi/${userId}`;
 
     let axiosConfig = {
         withCredentials: true,

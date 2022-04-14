@@ -28,6 +28,8 @@ const MarketplaceListing = ({ marketplaces }) => {
     const begin = (page - 1) * PAGE_SIZE;
     const end = Math.min(marketplaces.length, begin + PAGE_SIZE);
 
+    console.log(marketplaces);
+
     const Marketplace = ({ marketplace }) => {
         const defaultImg = "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930";
         return (
@@ -51,7 +53,14 @@ const MarketplaceListing = ({ marketplaces }) => {
         )
     }
 
-    return <>{marketplaces.slice(begin, end).map(marketplace => <Marketplace marketplace={marketplace} key={marketplace.id} />)}
+    return <>
+        <div>
+            {marketplaces && marketplaces.length > 0 ? 
+                (marketplaces.slice(begin, end).map(marketplace => <Marketplace marketplace={marketplace} key={marketplace.id} />)
+                ) : (
+                    <div>There are currently no marketplace listings available</div>
+                )}
+        </div>
         <div className="center">
             <ReactPaginate
                 pageCount={marketplaces.length / PAGE_SIZE}

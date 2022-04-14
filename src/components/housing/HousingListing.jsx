@@ -36,7 +36,13 @@ const HousingListing = ({ housings }) => {
     }
 
     return <>
-        {housings.slice(begin, end).map(housing => <Housing housing={housing} key={housing.id} />)}
+        <div>
+            {housings && housings.length > 0 ? 
+                (housings.slice(begin, end).map(housing => <Housing housing={housing} key={housing.id} />)
+                ) : (
+                    <div>There are currently no marketplace listings available</div>
+                )}
+        </div>
         <div className="center">
             <ReactPaginate
                 pageCount={Math.ceil(housings.length / PAGE_SIZE)}

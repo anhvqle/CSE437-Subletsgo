@@ -4,6 +4,8 @@ import { Container, Col, Row } from "react-bootstrap";
 import UserContext from "../../context/UserContext";
 import { getUserTenantListing, getUserHousingListing, getUserMarketplaceListing } from "../../data/profile";
 import TenantListing from "../tenant/TenantListing";
+import HousingListing from "../housing/HousingListing";
+import MarketplaceListing from "../marketplace/MarketplaceListing";
 
 function Profile() {
     let { currUser } = useContext(UserContext);
@@ -21,26 +23,26 @@ function Profile() {
         (async () => {
             setLoading(true);
             let tenants = await getUserTenantListing(userId);
+            let housings = await getUserHousingListing(userId);
+            let marketplaces = await getUserMarketplaceListing(userId);
             setLoading(false);
             setTenants(tenants.data.tenants);
+            setHousings(housings.data);
+            setMarketplaces(marketplaces.data);
         })();
     }, []);
 
-    const getUserTenantListings = (e) => {
-        console.log("Tenant");
-        console.log(tenants);
+    const getUserTenantListings = () => {
         let activeTenant = {tenant: true, housing: false, marketplace: false};
         setActive(activeTenant);
     }
 
-    const getUserHousingListings = (e) => {
-        console.log("Housing");
+    const getUserHousingListings = () => {
         let activeHousing = {tenant: false, housing: true, marketplace: false};
         setActive(activeHousing);
     }
 
-    const getUserMarketplaceListings = (e) => {
-        console.log("Marketplace");
+    const getUserMarketplaceListings = () => {
         let activeMarketplace = {tenant: false, housing: false, marketplace: true};
         setActive(activeMarketplace);
     }
@@ -72,7 +74,9 @@ function Profile() {
                     <Col sm={9}>
                         <h4 className="title">Your Listings</h4>
                         <hr />
-                        <TenantListing tenants={tenants} deleteTenantFrontEnd={deleteTenantFrontEnd} />
+                        {active.tenant && <TenantListing tenants={tenants} deleteTenantFrontEnd={deleteTenantFrontEnd} />}
+                        {active.housing && <HousingListing housings={housings} />}
+                        {active.marketplace && <MarketplaceListing marketplaces={marketplaces}/>}
                     </Col>
                 </Row>
             </Container>

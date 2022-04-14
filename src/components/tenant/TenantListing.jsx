@@ -32,7 +32,6 @@ function TenantListing(props) {
     const begin = (page - 1) * PAGE_SIZE;
     const end = Math.min(props.tenants.length, begin + PAGE_SIZE);
     const onDeleteClicked = (e) => {
-        // e.target.getAttribute("data-tenant-id");
         let id = e.target.dataset.tenantId;
         deleteTenant(id, userId)
         deleteTenantFrontEnd(id)
@@ -74,7 +73,7 @@ function TenantListing(props) {
                     })}
                 </ListGroup>
             ) : (
-                <div>There is currently no tenant listings available</div>
+                <div>There are currently no tenant listings available</div>
             )
             }
             <br />

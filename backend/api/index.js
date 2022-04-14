@@ -38,7 +38,11 @@ router.use(getAllMarketplaceApi);
 
 // Profile API
 const getUserTenantListingApi = require("./profile/getUserTenantListingApi");
+const getUserHousingListingApi = require("./profile/getUserHousingListingApi");
+const getUserMarketplaceListingApi = require("./profile/getUserMarketplaceListingApi");
 
 router.use(getUserTenantListingApi);
+router.use(getUserHousingListingApi);
+router.use(getUserMarketplaceListingApi);
 
 module.exports = router;
