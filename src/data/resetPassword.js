@@ -9,9 +9,6 @@ const resetPassword = async (isCorrectCode, email, password) => {
     }
 
     try {
-        console.log({
-            isCorrectCode
-        });
         const res = await axios.post(url, {
             isCorrectCode,
             password,

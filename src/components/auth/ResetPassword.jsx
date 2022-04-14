@@ -25,7 +25,10 @@ function ResetPassword() {
         let correctCode = sessionStorage.getItem("code")
         let email = sessionStorage.getItem("email")
         const res = await resetPassword(correctCode === code, email, password);
-
+        if (res.status === 200) {
+            sessionStorage.removeItem("email")
+            sessionStorage.removeItem("code")
+        }
         setResetPwMessage(res.data.message);
     }
 
