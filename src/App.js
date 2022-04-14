@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import './App.css';
 import Login from "./components/auth/Login";
 import Signup from "./components/auth/Signup";
+import ForgetPassword from "./components/auth/ForgetPassword";
 import WelcomePage from "./components/WelcomePage";
 import HousingPage from "./components/housing/HousingPage";
 import Tenant from "./components/tenant/Tenant";
@@ -28,6 +29,7 @@ function App() {
                     <Route path="/" exact element={<WelcomePage />} />
                     <Route path="/login" exact element={<Login />} />
                     <Route path="/signup" exact element={<Signup />} />
+                    <Route path="/forgetPassword" exact element={<ForgetPassword />} />
                     <Route path="/profile" exact element={
                         currUser ? <Profile /> : <Navigate replace to="/" />
                     } />

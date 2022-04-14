@@ -246,3 +246,19 @@ h5 {
     color: steelBlue !important;
     cursor: pointer;
 }
+
+.forget-pw-link {
+    text-decoration: none;
+    text-align: center;
+    font-size: large;
+}
+
+.forget-pw {
+    background-color: #f3f3f3;
+    padding: 2%;
+}
+
+.forget {
+    width: 80px;
+    margin-right: 1%;
+}

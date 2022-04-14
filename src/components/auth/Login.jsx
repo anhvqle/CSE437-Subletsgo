@@ -46,8 +46,10 @@ function Login() {
                     <input className="input-100" type="password" onChange={(e) => { setPassword(e.target.value); }} name="password" placeholder="Password" required />
                 </p>
 
-                <button onClick={handleLoginUser} className="center auth_button" id="signup_btn">Login</button>
+                <button onClick={handleLoginUser} className="center auth_button">Login</button>
                 <br />
+                <a className="center forget-pw-link" href="/forgetPassword">Forget password?</a>
+                <hr />
                 <p className="message">{loginMsg}</p>
             </div>
         </div>
