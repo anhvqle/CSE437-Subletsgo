@@ -2,11 +2,13 @@ import NavigationBar from "../NavigationBar";
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../../context/UserContext";
+import forgetPassword from "../../data/forgetPassword";
 
 function Login() {
     let navigate = useNavigate();
     let { currUser, setUser } = useContext(UserContext);
     const [email, setEmail] = useState("");
+    const [forgetPwMessage, setForgetPwMessage] = useState("");
 
     useEffect(() => {
         (async () => {
@@ -17,7 +19,13 @@ function Login() {
     }, [currUser]);
 
     const handleForgetPassword = async () => {
-        console.log(email);
+        const res = await forgetPassword(email);
+
+        setForgetPwMessage(res.data.message);
+
+        if (parseInt(res.status) === 200) {
+            navigate("/resetPassword");
+        }
     };
 
     return (
@@ -31,6 +39,8 @@ function Login() {
                 <hr />
                 <a href="/login"><button className="btn forget btn-secondary">Cancel</button></a>
                 <button onClick={handleForgetPassword} className="btn forget btn-primary">Reset</button>
+                <br /><br />
+                <p className="message">{forgetPwMessage}</p>
             </div>
         </div>
     )

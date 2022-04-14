@@ -13,7 +13,7 @@ router.post("/login", async (req, res) => {
             console.log("Error: ", err);
         }
     );
-    console.log({ userWithEmail });
+
     if (!userWithEmail || userWithEmail.password !== password) {
         return res.status(400).json({ message: "Email or password does not match!" });
     }

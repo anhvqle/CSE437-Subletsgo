@@ -5,6 +5,7 @@ import './App.css';
 import Login from "./components/auth/Login";
 import Signup from "./components/auth/Signup";
 import ForgetPassword from "./components/auth/ForgetPassword";
+import ResetPassword from "./components/auth/ResetPassword";
 import WelcomePage from "./components/WelcomePage";
 import HousingPage from "./components/housing/HousingPage";
 import Tenant from "./components/tenant/Tenant";
@@ -30,6 +31,7 @@ function App() {
                     <Route path="/login" exact element={<Login />} />
                     <Route path="/signup" exact element={<Signup />} />
                     <Route path="/forgetPassword" exact element={<ForgetPassword />} />
+                    <Route path="/resetPassword" exact element={<ResetPassword />} />
                     <Route path="/profile" exact element={
                         currUser ? <Profile /> : <Navigate replace to="/" />
                     } />
