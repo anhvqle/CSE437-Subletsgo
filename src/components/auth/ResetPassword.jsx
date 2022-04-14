@@ -28,6 +28,8 @@ function ResetPassword() {
         if (res.status === 200) {
             sessionStorage.removeItem("email")
             sessionStorage.removeItem("code")
+            window.alert("Password updated successfully. We will redirect you to login tab. Use the new password to login.")
+            navigate("/login");
         }
         setResetPwMessage(res.data.message);
     }
