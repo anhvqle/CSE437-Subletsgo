@@ -18,8 +18,7 @@ let transporter = nodemailer.createTransport({
     }
 });
 
-function sendCode(email, firstName) {
-    let code = generateCode();
+function sendCode(email, firstName, code) {
     let emailOptions = {
         from: process.env.EMAIL,
         to: email,
@@ -52,10 +51,10 @@ router.post("/forgetPassword", async (req, res) => {
     if (!userWithEmail) {
         return res.status(409).json({ message: "* This email is not registered with us." });
     }
+    let code = generateCode();
+    sendCode(email, userWithEmail.firstName, code);
 
-    sendCode(email, userWithEmail.firstName);
-
-    return res.status(200).json({ message: "* Please check your email for the code." });
+    return res.status(200).json({ code: code, message: "* Please check your email for the code." });
 });
 
 module.exports = router;

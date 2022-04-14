@@ -16,14 +16,23 @@ function ResetPassword() {
             if (currUser) {
                 navigate("/housing");
             }
+            if (!sessionStorage.getItem("email") || !sessionStorage.getItem("code")) {
+                navigate("/forgetPassword");
+            }
         })();
     }, [currUser]);
-
     const handleResetPassword = async () => {
-        console.log(code, password);
-        const res = await resetPassword(code, password);
+        let correctCode = sessionStorage.getItem("code")
+        let email = sessionStorage.getItem("email")
+        const res = await resetPassword(correctCode === code, email, password);
 
         setResetPwMessage(res.data.message);
+    }
+
+    const handleCancel = async () => {
+        sessionStorage.removeItem("email")
+        sessionStorage.removeItem("code")
+        navigate("/login");
     }
 
     return (
@@ -37,7 +46,7 @@ function ResetPassword() {
                 <p>Please enter your new password</p>
                 <input className="input-100" type="password" onChange={(e) => { setPassword(e.target.value); }} name="password" placeholder="New Password" required />
                 <hr />
-                <a href="/login"><button className="btn forget btn-secondary">Cancel</button></a>
+                <button className="btn forget btn-secondary" onClick={handleCancel}>Cancel</button>
                 <button onClick={handleResetPassword} className="btn forget btn-primary">Reset</button>
                 <br /><br />
                 <p className="message">{resetPwMessage}</p>

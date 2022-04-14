@@ -24,6 +24,8 @@ function ForgetPassword() {
         setForgetPwMessage(res.data.message);
 
         if (parseInt(res.status) === 200) {
+            sessionStorage.setItem("email", email)
+            sessionStorage.setItem("code", +res.data.code)
             navigate("/resetPassword");
         }
     };

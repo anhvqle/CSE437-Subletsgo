@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const resetPassword = async (code, password) => {
+const resetPassword = async (isCorrectCode, email, password) => {
     const url = "/api/resetPassword";
 
     let axiosConfig = {
@@ -9,9 +9,13 @@ const resetPassword = async (code, password) => {
     }
 
     try {
+        console.log({
+            isCorrectCode
+        });
         const res = await axios.post(url, {
-            code: code,
-            password: password,
+            isCorrectCode,
+            password,
+            email
         }, axiosConfig);
 
         return res;
