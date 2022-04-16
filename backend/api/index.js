@@ -36,9 +36,11 @@ router.use(deleteHousingApi);
 // Marketplace API
 const newMarketplaceApi = require("./marketplace/newMarketplaceApi");
 const getAllMarketplaceApi = require("./marketplace/getAllMarketplaceApi");
+const getMarketplaceDetailApi = require("./marketplace/getMarketplaceDetailApi");
 
 router.use(newMarketplaceApi);
 router.use(getAllMarketplaceApi);
+router.use(getMarketplaceDetailApi);
 
 // Profile API
 const getUserTenantListingApi = require("./profile/getUserTenantListingApi");

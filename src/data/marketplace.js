@@ -31,5 +31,20 @@ const getAllMarketplace = async () => {
     }
 }
 
-export { getAllMarketplace };
+const getMarketplaceDetail = async (marketplaceId) => {
+    const url = `/api/getMarketplaceDetailApi/${marketplaceId}`;
+
+    let axiosConfig = {
+        withCredentials: true,
+        headers: { "Content-Type": "application/json" }
+    }
+
+    try {
+        return await axios.get(url, axiosConfig);
+    } catch (err) {
+        return err.response;
+    }
+}
+
+export { getAllMarketplace, getMarketplaceDetail };
 export default newMarketplaceListing;

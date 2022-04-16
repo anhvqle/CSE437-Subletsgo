@@ -28,8 +28,6 @@ const MarketplaceListing = ({ marketplaces }) => {
     const begin = (page - 1) * PAGE_SIZE;
     const end = Math.min(marketplaces.length, begin + PAGE_SIZE);
 
-    console.log(marketplaces);
-
     const Marketplace = ({ marketplace }) => {
         const defaultImg = "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930";
         return (
@@ -43,6 +41,7 @@ const MarketplaceListing = ({ marketplaces }) => {
                         <div className="medium_size"><strong>Category: </strong> {capitalizeFirstLetter(marketplace.category)}</div>
                         <div className="medium_size"><strong>Condition:</strong> {capitalizeFirstLetter(marketplace.condition)}</div>
                         <div className="medium_size"><strong>Description:</strong> {marketplace.description}</div>
+                        <a href={`marketplace/${marketplace.id}`}>More details</a>
                     </Col>
                     <Col sm={4}>
                         <div className="medium_size"><Owner owner={marketplace.user} /></div>

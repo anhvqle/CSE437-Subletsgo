@@ -22,7 +22,7 @@ router.get("/getAllHousingApi", async (req, res) => {
                 { model: User, attributes: ["firstName", "lastName"] }
             ]
         });
-        // console.log(housings);
+
         housings = housings.map((housing) => {
             if (housing['housing-images'].id) {
                 let { key: imageName, bucket } = housing['housing-images'];

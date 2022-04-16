@@ -7,9 +7,7 @@ const router = express.Router();
 
 router.post("/resetPassword", async (req, res) => {
     const { isCorrectCode, email, password } = req.body;
-    console.log({
-        isCorrectCode, email, password
-    });
+
     if (!isCorrectCode) {
         return res.status(409).json({ message: "You enter the code wrong. Please try again" });
     }
@@ -32,9 +30,7 @@ router.post("/resetPassword", async (req, res) => {
         if (!user) {
             return res.status(409).json({ message: "* Your email does not exist in our record" });
         }
-        console.log({
-            user
-        });
+
         await user.update({
             password
         })

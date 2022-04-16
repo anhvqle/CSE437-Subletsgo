@@ -63,7 +63,7 @@ const HousingDetail = () => {
                 {
                     housingDetail &&
                     <>
-                        <div>
+                        <div className="margin-top">
                             <h2>Housing details</h2>
                             <div className="medium_size"><strong>Price: </strong> {housingDetail.price}$</div>
                             <div className="medium_size"><strong>Number of Bed: </strong> {housingDetail.numBed}</div>

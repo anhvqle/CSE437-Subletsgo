@@ -6,7 +6,7 @@ const router = express.Router();
 router.delete("/deleteTenantListing", async (req, res) => {
     const { id, userId } = req.body;
     const count = await Tenant.destroy({ where: { id, userId } });
-    console.log({ count });
+
     if (count === 1) {
         res.status(200).json({ message: "Delete successfully" })
     }

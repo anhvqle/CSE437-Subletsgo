@@ -25,7 +25,7 @@ router.get("/getUserHousingListingApi/:id", async (req, res) => {
                 userId: req.params.id
             }
         });
-        // console.log(housings);
+
         housings = housings.map((housing) => {
             if (housing['housing-images'].id) {
                 let { key: imageName, bucket } = housing['housing-images'];
