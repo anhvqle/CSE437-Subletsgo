@@ -5,6 +5,11 @@ import { getDetailHousing, deleteHousing } from "../../data/housing"
 import { Container, Button } from "react-bootstrap";
 import NavigationBar from "../NavigationBar"
 
+function formatPhoneNumber(s) {
+    let text = s.toString()
+    return "(" + text.substring(0, 3) + ") " + text.substring(3, 6) + "-" + text.substring(6, 10);
+}
+
 const Contact = ({ user }) => {
     const { firstName, lastName, phoneNumber, email } = user;
     const fullname = `${firstName} ${lastName}`
@@ -12,7 +17,7 @@ const Contact = ({ user }) => {
         <hr />
         <h2>Contact Information</h2>
         <div className="medium_size"><strong>Full name: </strong> {fullname}</div>
-        <div className="medium_size"><strong>Phone Number: </strong> {phoneNumber}</div>
+        <div className="medium_size"><strong>Phone Number: </strong> {formatPhoneNumber(phoneNumber)}</div>
         <div className="medium_size"><strong>Email: </strong> {email}</div>
     </div>)
 }
@@ -77,8 +82,7 @@ const HousingDetail = () => {
                             {housingDetail['housing-images'].map((imgSrc, index) => (
                                 <img key={`img-${index}`} src={imgSrc} alt={index} height="300" />
                             ))}
-                            <br />
-                            <br />
+                            <br /><br />
                             {isOwner && <>
                                 {deleteErrMessage && <p className="error">Error: {deleteErrMessage}</p>}
                                 <Button className="btn-danger" onClick={onDeleteClicked}>Delete this listing</Button>

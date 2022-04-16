@@ -83,7 +83,7 @@ const NewMarketplaceListing = () => {
                         <option value="apparel">Apparel</option>
                         <option value="vehicle">Vehicles</option>
                         <option value="furniture">Furniture</option>
-                        <option value="electronic">Electronics</option>
+                        <option value="electronics">Electronics</option>
                         <option value="office">Offices</option>
                         <option value="free">Free Stuff</option>
                         <option value="musical">Musical Instruments</option>

@@ -46,5 +46,20 @@ const getMarketplaceDetail = async (marketplaceId) => {
     }
 }
 
-export { getAllMarketplace, getMarketplaceDetail };
+const deleteMarketplace = async (marketplaceId) => {
+    const url = `/api/deleteMarketplaceApi/${marketplaceId}`;
+
+    let axiosConfig = {
+        withCredentials: true,
+        headers: { "Content-Type": "application/json" }
+    }
+
+    try {
+        return await axios.delete(url, axiosConfig);
+    } catch (err) {
+        return err.response;
+    }
+}
+
+export { getAllMarketplace, getMarketplaceDetail, deleteMarketplace };
 export default newMarketplaceListing;
