@@ -40,7 +40,7 @@ function ForgetPassword() {
                 <input className="input-100" type="text" name="email" onChange={(e) => { setEmail(e.target.value); }} placeholder="Enter Your Email Here" required />
                 <hr />
                 <a href="/login"><button className="btn forget btn-secondary">Cancel</button></a>
-                <button onClick={handleForgetPassword} className="btn forget btn-primary">Reset</button>
+                <button onClick={handleForgetPassword} className="btn forget btn-primary">Continue</button>
                 <br /><br />
                 <p className="message">{forgetPwMessage}</p>
             </div>
