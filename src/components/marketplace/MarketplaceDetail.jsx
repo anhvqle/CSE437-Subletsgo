@@ -67,7 +67,8 @@ const MarketplaceDetail = () => {
         }
     }
 
-    const isOwner = currUser.id == marketplaceDetail?.user?.id
+    const isOwner = currUser.id == marketplaceDetail?.user?.id;
+    const defaultImg = "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930";
 
     return (
         <>
@@ -85,13 +86,19 @@ const MarketplaceDetail = () => {
                             <div className="medium_size"><strong>Condition:</strong> {capitalizeFirstLetter(marketplaceDetail.condition)}</div>
                             <div className="medium_size"><strong>Description:</strong> {marketplaceDetail.description}</div>
                             
-                            <Carousel className="width-50">
-                                {marketplaceDetail['marketplace-images'].map((imgSrc, index) => (
-                                    <Carousel.Item>
-                                        <img className="d-block w-100" key={`img-${index}`} src={imgSrc} alt={index}/>
-                                    </Carousel.Item>
-                                ))}
-                            </Carousel>
+                            {marketplaceDetail['marketplace-images'] && marketplaceDetail['marketplace-images'].length > 0 ? 
+                                (
+                                    <Carousel className="width-50">
+                                        {marketplaceDetail['marketplace-images'].map((imgSrc, index) => (
+                                            <Carousel.Item>
+                                                <img className="d-block w-100" key={`img-${index}`} src={imgSrc} alt={index}/>
+                                            </Carousel.Item>
+                                        ))}
+                                    </Carousel>
+                                ) : (
+                                    <img className="width-20" key="no-img-available" src={defaultImg} alt="no-img-available"/>
+                                )
+                            }
 
                             <br />
                             {isOwner && <>

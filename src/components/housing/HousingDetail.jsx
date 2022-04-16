@@ -58,7 +58,8 @@ const HousingDetail = () => {
             setDeleteErrMessage(response.data?.message || response.data)
         }
     }
-    const isOwner = currUser.id == housingDetail?.user?.id
+    const isOwner = currUser.id == housingDetail?.user?.id;
+    const defaultImg = "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930";
 
     return (
         <>
@@ -81,13 +82,19 @@ const HousingDetail = () => {
                             <div className="medium_size"><strong>Elevator:</strong> {housingDetail.elevator === 1 ? "Yes" : "No"}</div>
                             {housingDetail['housing-address'] && <div className="medium_size"><strong>Address:</strong> {housingDetail['housing-address'].label}</div>}
 
-                            <Carousel className="width-50">
-                                {housingDetail['housing-images'].map((imgSrc, index) => (
-                                    <Carousel.Item>
-                                        <img className="d-block w-100" key={`img-${index}`} src={imgSrc} alt={index}/>
-                                    </Carousel.Item>
-                                ))}
-                            </Carousel>
+                            {housingDetail['housing-images'] && housingDetail['housing-images'].length > 0 ? 
+                                (
+                                    <Carousel className="width-50">
+                                        {housingDetail['housing-images'].map((imgSrc, index) => (
+                                            <Carousel.Item>
+                                                <img className="d-block w-100" key={`img-${index}`} src={imgSrc} alt={index}/>
+                                            </Carousel.Item>
+                                        ))}
+                                    </Carousel>
+                                ) : (
+                                    <img className="width-20" key="no-img-available" src={defaultImg} alt="no-img-available"/>
+                                )
+                            }
 
                             <br />
                             {isOwner && <>
