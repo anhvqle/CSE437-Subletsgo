@@ -2,7 +2,8 @@ import { useEffect, useState, useContext } from "react";
 import UserContext from "../../context/UserContext"
 import { useParams, useNavigate } from "react-router-dom";
 import { Container, Button } from "react-bootstrap";
-import NavigationBar from "../NavigationBar"
+import NavigationBar from "../NavigationBar";
+import { Carousel } from "react-bootstrap";
 import { getMarketplaceDetail, deleteMarketplace } from "../../data/marketplace";
 
 function capitalizeFirstLetter(s) {
@@ -83,10 +84,16 @@ const MarketplaceDetail = () => {
                             <div className="medium_size"><strong>Category: </strong> {capitalizeFirstLetter(marketplaceDetail.category)}</div>
                             <div className="medium_size"><strong>Condition:</strong> {capitalizeFirstLetter(marketplaceDetail.condition)}</div>
                             <div className="medium_size"><strong>Description:</strong> {marketplaceDetail.description}</div>
-                            {marketplaceDetail['marketplace-images'].map((imgSrc, index) => (
-                                <img key={`img-${index}`} src={imgSrc} alt={index} height="300" />
-                            ))}
-                            <br /><br />
+                            
+                            <Carousel className="width-50">
+                                {marketplaceDetail['marketplace-images'].map((imgSrc, index) => (
+                                    <Carousel.Item>
+                                        <img className="d-block w-100" key={`img-${index}`} src={imgSrc} alt={index}/>
+                                    </Carousel.Item>
+                                ))}
+                            </Carousel>
+
+                            <br />
                             {isOwner && <>
                                 {deleteErrMessage && <p className="error">Error: {deleteErrMessage}</p>}
                                 <Button className="btn-danger" onClick={onDeleteClicked}>Delete</Button>
