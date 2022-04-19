@@ -7,12 +7,12 @@ import { Carousel } from "react-bootstrap";
 import { getMarketplaceDetail, deleteMarketplace } from "../../data/marketplace";
 
 function capitalizeFirstLetter(s) {
-    return s.charAt(0).toUpperCase() + s.slice(1)
+    return s?.charAt(0)?.toUpperCase() + s?.slice(1)
 }
 
 function formatPhoneNumber(s) {
-    let text = s.toString()
-    return "(" + text.substring(0, 3) + ") " + text.substring(3, 6) + "-" + text.substring(6, 10);
+    let text = s?.toString()
+    return "(" + text?.substring(0, 3) + ") " + text?.substring(3, 6) + "-" + text?.substring(6, 10);
 }
 
 const Contact = ({ user }) => {
@@ -72,7 +72,7 @@ const MarketplaceDetail = () => {
         <>
             <NavigationBar />
             <Container>
-            {errMessage && <p className="error">Error: {errMessage}</p>}
+                {errMessage && <p className="error">Error: {errMessage}</p>}
                 {loading && <div className="middle-spinner loader"></div>}
                 {
                     marketplaceDetail &&
@@ -83,18 +83,18 @@ const MarketplaceDetail = () => {
                             <div className="medium_size"><strong>Category: </strong> {capitalizeFirstLetter(marketplaceDetail.category)}</div>
                             <div className="medium_size"><strong>Condition:</strong> {capitalizeFirstLetter(marketplaceDetail.condition)}</div>
                             <div className="medium_size"><strong>Description:</strong> {marketplaceDetail.description}</div>
-                            
-                            {marketplaceDetail['marketplace-images'] && marketplaceDetail['marketplace-images'].length > 0 ? 
+
+                            {marketplaceDetail['marketplace-images'] && marketplaceDetail['marketplace-images'].length > 0 ?
                                 (
                                     <Carousel className="width-50">
                                         {marketplaceDetail['marketplace-images'].map((imgSrc, index) => (
                                             <Carousel.Item>
-                                                <img className="d-block w-100" key={`img-${index}`} src={imgSrc} alt={index}/>
+                                                <img className="d-block w-100" key={`img-${index}`} src={imgSrc} alt={index} />
                                             </Carousel.Item>
                                         ))}
                                     </Carousel>
                                 ) : (
-                                    <img className="width-20" key="no-img-available" src={defaultImg} alt="no-img-available"/>
+                                    <img className="width-20" key="no-img-available" src={defaultImg} alt="no-img-available" />
                                 )
                             }
 

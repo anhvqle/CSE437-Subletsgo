@@ -7,8 +7,8 @@ import NavigationBar from "../NavigationBar";
 import { Carousel } from "react-bootstrap";
 
 function formatPhoneNumber(s) {
-    let text = s.toString()
-    return "(" + text.substring(0, 3) + ") " + text.substring(3, 6) + "-" + text.substring(6, 10);
+    let text = s?.toString()
+    return "(" + text?.substring(0, 3) + ") " + text?.substring(3, 6) + "-" + text?.substring(6, 10);
 }
 
 const Contact = ({ user }) => {
@@ -82,17 +82,17 @@ const HousingDetail = () => {
                             <div className="medium_size"><strong>Elevator:</strong> {housingDetail.elevator === 1 ? "Yes" : "No"}</div>
                             {housingDetail['housing-address'] && <div className="medium_size"><strong>Address:</strong> {housingDetail['housing-address'].label}</div>}
 
-                            {housingDetail['housing-images'] && housingDetail['housing-images'].length > 0 ? 
+                            {housingDetail['housing-images'] && housingDetail['housing-images'].length > 0 ?
                                 (
                                     <Carousel className="width-50">
                                         {housingDetail['housing-images'].map((imgSrc, index) => (
                                             <Carousel.Item>
-                                                <img className="d-block w-100" key={`img-${index}`} src={imgSrc} alt={index}/>
+                                                <img className="d-block w-100" key={`img-${index}`} src={imgSrc} alt={index} />
                                             </Carousel.Item>
                                         ))}
                                     </Carousel>
                                 ) : (
-                                    <img className="width-20" key="no-img-available" src={defaultImg} alt="no-img-available"/>
+                                    <img className="width-20" key="no-img-available" src={defaultImg} alt="no-img-available" />
                                 )
                             }
 

@@ -7,8 +7,8 @@ function capitalizeFirstLetter(s) {
 }
 
 function formatPhoneNumber(s) {
-    let text = s.toString()
-    return "(" + text.substring(0, 3) + ") " + text.substring(3, 6) + "-" + text.substring(6, 10);
+    let text = s?.toString()
+    return "(" + text?.substring(0, 3) + ") " + text?.substring(3, 6) + "-" + text?.substring(6, 10);
 }
 
 const Owner = ({ owner }) => {
@@ -54,7 +54,7 @@ const MarketplaceListing = ({ marketplaces }) => {
 
     return <>
         <div>
-            {marketplaces && marketplaces.length > 0 ? 
+            {marketplaces && marketplaces.length > 0 ?
                 (marketplaces.slice(begin, end).map(marketplace => <Marketplace marketplace={marketplace} key={marketplace.id} />)
                 ) : (
                     <div>There are currently no marketplace listings available</div>
