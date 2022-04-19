@@ -4,11 +4,13 @@ const router = express.Router();
 
 // Auth API
 const signupApi = require('./auth/signup');
+const validateSignupApi = require('./auth/validateSignup');
 const loginApi = require('./auth/login');
 const forgetPasswordApi = require('./auth/forgetPassword');
 const resetPasswordApi = require('./auth/resetPassword');
 
 router.use(signupApi);
+router.use(validateSignupApi);
 router.use(loginApi);
 router.use(forgetPasswordApi);
 router.use(resetPasswordApi);

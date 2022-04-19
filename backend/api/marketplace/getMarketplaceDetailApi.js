@@ -28,15 +28,11 @@ router.get("/getMarketplaceDetailApi/:id", async (req, res) => {
             res.status(200).json(marketplaceDetailsAdjusted);
         }
 
-        console.log("marketplaceDetails: ", marketplaceDetails);
-
         marketplaceDetailsAdjusted["marketplace-images"] = marketplaceDetails.map((marketplace) => marketplace["marketplace-images"])
         marketplaceDetailsAdjusted["marketplace-images"] = marketplaceDetailsAdjusted["marketplace-images"].map((marketplaceImage) => {
             let { key: imageName, bucket } = marketplaceImage;
             return getImageUrl(imageName, bucket);
         })
-
-        console.log(marketplaceDetailsAdjusted);
 
         res.status(200).json(marketplaceDetailsAdjusted);
     } catch (err) {

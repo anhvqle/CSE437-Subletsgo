@@ -42,8 +42,6 @@ const MarketplaceDetail = () => {
             let response = await getMarketplaceDetail(marketplaceId);
             setLoading(false);
 
-            console.log(response);
-
             if (response.status <= 299 || response.status === 304) {
                 setErrMessage(null);
                 setMarketplaceDetail(response.data);
