@@ -1,7 +1,8 @@
 import axios from "axios";
 
-const signup = async (firstName, lastName, phoneNumber, email, password, code) => {
+const signup = async (firstName, lastName, phoneNumber, email, password, isCodeCorrect) => {
     const url = "/api/signup";
+    console.log({ isCodeCorrect });
 
     let axiosConfig = {
         withCredentials: true,
@@ -15,7 +16,7 @@ const signup = async (firstName, lastName, phoneNumber, email, password, code) =
             phoneNumber: phoneNumber,
             email: email,
             password: password,
-            code: code,
+            isCodeCorrect: isCodeCorrect,
         }, axiosConfig);
 
         return res;

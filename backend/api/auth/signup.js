@@ -32,28 +32,30 @@ function sendConfirmationEmail(email, firstName) {
 }
 
 router.post("/signup", async (req, res) => {
-    const { firstName, lastName, phoneNumber, email, password, code } = req.body;
+    const { firstName, lastName, phoneNumber, email, password, isCodeCorrect } = req.body;
 
-    // TODO: Uncomment code below when email verification is implemented
+    if (!isCodeCorrect) {
+        return res.status(400).json({ message: "* The code you entered is wrong. Please try again!" });
+    }
 
-    // const newUser = new User({ firstName, lastName, phoneNumber, email, password });
+    const newUser = new User({ firstName, lastName, phoneNumber, email, password });
 
-    // const savedUser = await newUser.save().catch((err) => {
-    //     res.status(500).json({ message: "* Cannot register user at the moment!" });
-    // });
+    const savedUser = await newUser.save().catch((err) => {
+        return res.status(500).json({ message: "* Cannot register user at the moment!" });
+    });
 
-    // if (savedUser) {
-    //     const userData = savedUser.dataValues;
-    //     delete userData.password;
-    //     const token = jwt.sign(
-    //         userData,
-    //         "secret_jwt",
-    //         { expiresIn: "1d" }
-    //     );
+    if (savedUser) {
+        const userData = savedUser.dataValues;
+        delete userData.password;
+        const token = jwt.sign(
+            userData,
+            "secret_jwt",
+            { expiresIn: "1d" }
+        );
 
-    //     res.status(200).json({ token });
-    //     sendConfirmationEmail(email, firstName);
-    // }
+        res.status(200).json({ token });
+        sendConfirmationEmail(email, firstName);
+    }
 });
 
 

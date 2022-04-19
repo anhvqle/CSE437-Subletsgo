@@ -22,7 +22,7 @@ function sendCode(email, firstName, code) {
     let emailOptions = {
         from: process.env.EMAIL,
         to: email,
-        subject: "Registration Verification Code", 
+        subject: "Registration Verification Code",
         text: `Hi ${firstName}, \n\nTo complete your registration, please enter this code on our website: ${code}.\n\nRegards,\nThe WUSTL-Subletsgo Team`,
     };
 
@@ -72,7 +72,7 @@ router.post("/validateSignup", async (req, res) => {
     }
 
     let code = generateCode();
-    res.status(200).json({});
+    res.status(200).json({ code });
     sendCode(email, firstName, code);
 });
 
