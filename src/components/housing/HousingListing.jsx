@@ -14,7 +14,7 @@ const HousingListing = ({ housings }) => {
             <Container fluid>
                 <Row className="layout">
                     <Col sm={4}>
-                        <img src={housing["housing-images"] || defaultImg} alt={housing.id} width="200" />
+                        <img src={housing["housing-images"] || defaultImg} alt={housing.id} width="300" />
                     </Col>
                     <Col sm={8}>
                         <div className="medium_size"><strong>Price: </strong> {housing.price}$</div>
@@ -40,7 +40,7 @@ const HousingListing = ({ housings }) => {
             {housings && housings.length > 0 ? 
                 (housings.slice(begin, end).map(housing => <Housing housing={housing} key={housing.id} />)
                 ) : (
-                    <div>There are currently no marketplace listings available</div>
+                    <div>There are currently no housing listings available</div>
                 )}
         </div>
         <div className="center">

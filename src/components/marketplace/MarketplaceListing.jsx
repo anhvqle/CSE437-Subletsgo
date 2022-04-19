@@ -34,7 +34,7 @@ const MarketplaceListing = ({ marketplaces }) => {
             <Container fluid>
                 <Row className="layout">
                     <Col sm={4}>
-                        <img src={marketplace["marketplace-images"] || defaultImg} alt={marketplace.id} width="200" />
+                        <img src={marketplace["marketplace-images"] || defaultImg} alt={marketplace.id} width="300" />
                     </Col>
                     <Col sm={4}>
                         <div className="medium_size"><strong>Price: </strong> {marketplace.price}$</div>
