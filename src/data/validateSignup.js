@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const validateSignup = async (phoneNumber, email, password) => {
+const validateSignup = async (firstName, phoneNumber, email, password) => {
     const url = "/api/validateSignup";
 
     let axiosConfig = {
@@ -10,6 +10,7 @@ const validateSignup = async (phoneNumber, email, password) => {
 
     try {
         const res = await axios.post(url, {
+            firstName: firstName,
             phoneNumber: phoneNumber,
             email: email,
             password: password,

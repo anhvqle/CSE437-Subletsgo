@@ -34,24 +34,26 @@ function sendConfirmationEmail(email, firstName) {
 router.post("/signup", async (req, res) => {
     const { firstName, lastName, phoneNumber, email, password, code } = req.body;
 
-    const newUser = new User({ firstName, lastName, phoneNumber, email, password });
+    // TODO: Uncomment code below when email verification is implemented
 
-    const savedUser = await newUser.save().catch((err) => {
-        res.status(500).json({ message: "* Cannot register user at the moment!" });
-    });
+    // const newUser = new User({ firstName, lastName, phoneNumber, email, password });
 
-    if (savedUser) {
-        const userData = savedUser.dataValues;
-        delete userData.password;
-        const token = jwt.sign(
-            userData,
-            "secret_jwt",
-            { expiresIn: "1d" }
-        );
+    // const savedUser = await newUser.save().catch((err) => {
+    //     res.status(500).json({ message: "* Cannot register user at the moment!" });
+    // });
 
-        res.status(200).json({ token });
-        sendConfirmationEmail(email, firstName);
-    }
+    // if (savedUser) {
+    //     const userData = savedUser.dataValues;
+    //     delete userData.password;
+    //     const token = jwt.sign(
+    //         userData,
+    //         "secret_jwt",
+    //         { expiresIn: "1d" }
+    //     );
+
+    //     res.status(200).json({ token });
+    //     sendConfirmationEmail(email, firstName);
+    // }
 });
 
 

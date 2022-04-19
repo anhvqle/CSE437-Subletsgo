@@ -1,12 +1,42 @@
 const express = require('express');
 const User = require('../../models/user')
 const jwt = require("jsonwebtoken");
+const nodemailer = require("nodemailer");
 require('dotenv').config();
 
 const router = express.Router();
 
+function generateCode() {
+    return Math.floor(100000 + Math.random() * 900000);
+}
+
+let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: process.env.EMAIL,
+        pass: process.env.PASSWORD
+    }
+});
+
+function sendCode(email, firstName, code) {
+    let emailOptions = {
+        from: process.env.EMAIL,
+        to: email,
+        subject: "Registration Verification Code", 
+        text: `Hi ${firstName}, \n\nTo complete your registration, please enter this code on our website: ${code}.\n\nRegards,\nThe WUSTL-Subletsgo Team`,
+    };
+
+    transporter.sendMail(emailOptions, function (error, data) {
+        if (error) {
+            console.log("Error: ", error);
+        } else {
+            console.log("Email sent!");
+        }
+    });
+}
+
 router.post("/validateSignup", async (req, res) => {
-    const { phoneNumber, email, password } = req.body;
+    const { firstName, phoneNumber, email, password } = req.body;
 
     if (!email.includes("@wustl.edu")) {
         return res.status(409).json({ message: "* Please use your WUSTL email to sign up." });
@@ -41,7 +71,9 @@ router.post("/validateSignup", async (req, res) => {
         return res.status(409).json({ message: "* User with email already exists!" });
     }
 
-    return res.status(200).json({});
+    let code = generateCode();
+    res.status(200).json({});
+    sendCode(email, firstName, code);
 });
 
 

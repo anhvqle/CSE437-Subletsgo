@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const signup = async (firstName, lastName, phoneNumber, email, password) => {
+const signup = async (firstName, lastName, phoneNumber, email, password, code) => {
     const url = "/api/signup";
 
     let axiosConfig = {
@@ -15,6 +15,7 @@ const signup = async (firstName, lastName, phoneNumber, email, password) => {
             phoneNumber: phoneNumber,
             email: email,
             password: password,
+            code: code,
         }, axiosConfig);
 
         return res;

@@ -28,7 +28,7 @@ function Signup() {
     const [signupMsg, setSignupMsg] = useState("");
 
     const handleGetCode = async () => {
-        const res = await validateSignup(phoneNumber, email, password);
+        const res = await validateSignup(firstName, phoneNumber, email, password);
         setSignupMsg(res.data.message);
         if (parseInt(res.status) === 200) {
             setCodeSent(true);
@@ -36,7 +36,7 @@ function Signup() {
     }
     
     const handleSignupUser = async () => {
-        const res = await signup(firstName, lastName, phoneNumber, email, password,  code);
+        const res = await signup(firstName, lastName, phoneNumber, email, password, code);
 
         setSignupMsg(res.data.message);
 
@@ -91,7 +91,7 @@ function Signup() {
                 (
                     <div>
                         <p className="antiquewhite">Please enter your 6-digit code we sent to your email below.
-                        <input className="input-100" type="text" onChange={(e) => { setCode(e.target.value); }} name="code" placeholder="6-digit code" required />
+                            <input className="input-100" type="text" onChange={(e) => { setCode(e.target.value); }} name="code" placeholder="6-digit code" required />
                         </p>
                         <button onClick={handleSignupUser} className="center auth_button" id="signup_btn">Signup</button>
                     </div>
