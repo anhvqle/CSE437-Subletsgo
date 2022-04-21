@@ -79,7 +79,7 @@ const MarketplaceDetail = () => {
                     <>
                         <div className="margin-top">
                             <h2>Item details</h2>
-                            <div className="medium_size"><strong>Price: </strong> {marketplaceDetail.price}$</div>
+                            <div className="medium_size"><strong>Price: </strong> ${marketplaceDetail.price}</div>
                             <div className="medium_size"><strong>Category: </strong> {capitalizeFirstLetter(marketplaceDetail.category)}</div>
                             <div className="medium_size"><strong>Condition:</strong> {capitalizeFirstLetter(marketplaceDetail.condition)}</div>
                             <div className="medium_size"><strong>Description:</strong> {marketplaceDetail.description}</div>

@@ -17,7 +17,7 @@ const HousingListing = ({ housings }) => {
                         <img src={housing["housing-images"] || defaultImg} alt={housing.id} width="300" />
                     </Col>
                     <Col sm={8}>
-                        <div className="medium_size"><strong>Price: </strong> {housing.price}$</div>
+                        <div className="medium_size"><strong>Price: </strong> ${housing.price}</div>
                         <div className="medium_size"><strong>Number of Bed: </strong> {housing.numBed}</div>
                         <div className="medium_size"><strong>Number of Bath:</strong> {housing.numBath}</div>
                         <div className="medium_size"><strong>Air Conditioner:</strong> {housing.airConditioner === 1 ? "Yes" : "No"}</div>

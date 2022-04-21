@@ -37,7 +37,7 @@ const MarketplaceListing = ({ marketplaces }) => {
                         <img src={marketplace["marketplace-images"] || defaultImg} alt={marketplace.id} width="300" />
                     </Col>
                     <Col sm={4}>
-                        <div className="medium_size"><strong>Price: </strong> {marketplace.price}$</div>
+                        <div className="medium_size"><strong>Price: </strong> ${marketplace.price}</div>
                         <div className="medium_size"><strong>Category: </strong> {capitalizeFirstLetter(marketplace.category)}</div>
                         <div className="medium_size"><strong>Condition:</strong> {capitalizeFirstLetter(marketplace.condition)}</div>
                         <div className="medium_size"><strong>Description:</strong> {marketplace.description}</div>

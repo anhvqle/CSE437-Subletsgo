@@ -72,7 +72,7 @@ const HousingDetail = () => {
                     <>
                         <div className="margin-top">
                             <h2>Housing details</h2>
-                            <div className="medium_size"><strong>Price: </strong> {housingDetail.price}$</div>
+                            <div className="medium_size"><strong>Price: </strong> ${housingDetail.price}</div>
                             <div className="medium_size"><strong>Number of Bed: </strong> {housingDetail.numBed}</div>
                             <div className="medium_size"><strong>Number of Bath:</strong> {housingDetail.numBath}</div>
                             <div className="medium_size"><strong>Air Conditioner:</strong> {housingDetail.airConditioner === 1 ? "Yes" : "No"}</div>
