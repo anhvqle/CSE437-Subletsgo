@@ -93,7 +93,7 @@ function Signup() {
                     (
                         <div>
                             <p className="antiquewhite">Please enter your 6-digit code we sent to your email below.
-                                <input className="input-100" type="text" onChange={(e) => { setCode(e.target.value); }} name="code" placeholder="6-digit code" required />
+                                <input className="input-100" type="text" onChange={(e) => { setCode(e.target.value); }} name="code" placeholder="6-digit code" value={code} required />
                             </p>
                             <button onClick={handleSignupUser} className="center auth_button" id="signup_btn">Signup</button>
                             <br />
