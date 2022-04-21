@@ -55,30 +55,33 @@ const MarketplaceListing = ({ marketplaces }) => {
     return <>
         <div>
             {marketplaces && marketplaces.length > 0 ?
-                (marketplaces.slice(begin, end).map(marketplace => <Marketplace marketplace={marketplace} key={marketplace.id} />)
+                (
+                    <>
+                    {marketplaces.slice(begin, end).map(marketplace => <Marketplace marketplace={marketplace} key={marketplace.id} />)}
+                    <div className="center">
+                        <ReactPaginate
+                            pageCount={Math.ceil(marketplaces.length / PAGE_SIZE)}
+                            pageRangeDisplayed={1}
+                            marginPagesDisplayed={5}
+                            breakClassName={"page-item"}
+                            breakLinkClassName={"page-link"}
+                            containerClassName={"pagination"}
+                            pageClassName={"page-item"}
+                            pageLinkClassName={"page-link"}
+                            previousClassName={"page-item"}
+                            previousLinkClassName={"page-link"}
+                            nextClassName={"page-item"}
+                            nextLinkClassName={"page-link"}
+                            activeClassName={"active"}
+                            onPageChange={(page) => {
+                                setPage(page.selected + 1);
+                            }}
+                        />
+                    </div>
+                    </>
                 ) : (
-                    <div>There are currently no marketplace listings available</div>
+                    <div>There are no marketplace listings available</div>
                 )}
-        </div>
-        <div className="center">
-            <ReactPaginate
-                pageCount={Math.ceil(marketplaces.length / PAGE_SIZE)}
-                pageRangeDisplayed={1}
-                marginPagesDisplayed={5}
-                breakClassName={"page-item"}
-                breakLinkClassName={"page-link"}
-                containerClassName={"pagination"}
-                pageClassName={"page-item"}
-                pageLinkClassName={"page-link"}
-                previousClassName={"page-item"}
-                previousLinkClassName={"page-link"}
-                nextClassName={"page-item"}
-                nextLinkClassName={"page-link"}
-                activeClassName={"active"}
-                onPageChange={(page) => {
-                    setPage(page.selected + 1);
-                }}
-            />
         </div>
     </>
 }

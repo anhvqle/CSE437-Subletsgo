@@ -38,30 +38,33 @@ const HousingListing = ({ housings }) => {
     return <>
         <div>
             {housings && housings.length > 0 ? 
-                (housings.slice(begin, end).map(housing => <Housing housing={housing} key={housing.id} />)
+                (
+                    <>
+                    {housings.slice(begin, end).map(housing => <Housing housing={housing} key={housing.id} />)}
+                    <div className="center">
+                        <ReactPaginate
+                            pageCount={Math.ceil(housings.length / PAGE_SIZE)}
+                            pageRangeDisplayed={1}
+                            marginPagesDisplayed={5}
+                            breakClassName={"page-item"}
+                            breakLinkClassName={"page-link"}
+                            containerClassName={"pagination"}
+                            pageClassName={"page-item"}
+                            pageLinkClassName={"page-link"}
+                            previousClassName={"page-item"}
+                            previousLinkClassName={"page-link"}
+                            nextClassName={"page-item"}
+                            nextLinkClassName={"page-link"}
+                            activeClassName={"active"}
+                            onPageChange={(page) => {
+                                setPage(page.selected + 1);
+                            }}
+                        />
+                    </div>
+                    </>
                 ) : (
-                    <div>There are currently no housing listings available</div>
+                    <div>There are no housing listings available</div>
                 )}
-        </div>
-        <div className="center">
-            <ReactPaginate
-                pageCount={Math.ceil(housings.length / PAGE_SIZE)}
-                pageRangeDisplayed={1}
-                marginPagesDisplayed={5}
-                breakClassName={"page-item"}
-                breakLinkClassName={"page-link"}
-                containerClassName={"pagination"}
-                pageClassName={"page-item"}
-                pageLinkClassName={"page-link"}
-                previousClassName={"page-item"}
-                previousLinkClassName={"page-link"}
-                nextClassName={"page-item"}
-                nextLinkClassName={"page-link"}
-                activeClassName={"active"}
-                onPageChange={(page) => {
-                    setPage(page.selected + 1);
-                }}
-            />
         </div>
     </>
 }

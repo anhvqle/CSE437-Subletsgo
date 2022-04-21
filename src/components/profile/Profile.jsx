@@ -10,6 +10,7 @@ import MarketplaceListing from "../marketplace/MarketplaceListing";
 function Profile() {
     let { currUser } = useContext(UserContext);
     let userId = currUser.id;
+    let userFullname = currUser.firstName + " " + currUser.lastName;
 
     const [tenants, setTenants] = useState([]);
     const [housings, setHousings] = useState([]);
@@ -72,7 +73,7 @@ function Profile() {
                         </h4>
                     </Col>
                     <Col sm={9}>
-                        <h4 className="title">Your Listings</h4>
+                        <h4 className="title"><i>@{userFullname}'s</i> Listings</h4>
                         <hr />
                         {active.tenant && <TenantListing tenants={tenants} deleteTenantFrontEnd={deleteTenantFrontEnd} />}
                         {active.housing && <HousingListing housings={housings} />}
