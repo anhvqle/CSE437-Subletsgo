@@ -62,7 +62,7 @@ const MarketplaceListing = ({ marketplaces }) => {
         </div>
         <div className="center">
             <ReactPaginate
-                pageCount={marketplaces.length / PAGE_SIZE}
+                pageCount={Math.ceil(marketplaces.length / PAGE_SIZE)}
                 pageRangeDisplayed={1}
                 marginPagesDisplayed={5}
                 breakClassName={"page-item"}
