@@ -33,17 +33,17 @@ const MarketplaceListing = ({ marketplaces }) => {
         return (
             <Container fluid>
                 <Row className="layout">
-                    <Col sm={4}>
+                    <Col>
                         <img src={marketplace["marketplace-images"] || defaultImg} alt={marketplace.id} width="300" />
                     </Col>
-                    <Col sm={4}>
+                    <Col>
                         <div className="medium_size"><strong>Price: </strong> ${marketplace.price}</div>
                         <div className="medium_size"><strong>Category: </strong> {capitalizeFirstLetter(marketplace.category)}</div>
                         <div className="medium_size"><strong>Condition:</strong> {capitalizeFirstLetter(marketplace.condition)}</div>
                         <div className="medium_size"><strong>Description:</strong> {marketplace.description}</div>
                         <a href={`marketplace/${marketplace.id}`}>More details</a>
                     </Col>
-                    <Col sm={4}>
+                    <Col>
                         <div className="medium_size"><Owner owner={marketplace.user} /></div>
                     </Col>
                 </Row>

@@ -13,10 +13,10 @@ const HousingListing = ({ housings }) => {
         return (
             <Container fluid>
                 <Row className="layout">
-                    <Col sm={4}>
+                    <Col>
                         <img src={housing["housing-images"] || defaultImg} alt={housing.id} width="300" />
                     </Col>
-                    <Col sm={8}>
+                    <Col>
                         <div className="medium_size"><strong>Price: </strong> ${housing.price}</div>
                         <div className="medium_size"><strong>Number of Bed: </strong> {housing.numBed}</div>
                         <div className="medium_size"><strong>Number of Bath:</strong> {housing.numBath}</div>
