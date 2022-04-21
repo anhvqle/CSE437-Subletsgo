@@ -12,7 +12,7 @@ const HousingFilter = ({ initialPriceRange, changeOption, changePrice }) => {
         const data = e.target.dataset;
         changeOption(data.category, data.option, e.target.checked)
     }
-    const defaultValue = priceRange[0] ? priceRange : initialPriceRange;
+    const defaultValue = priceRange[0] !== null ? priceRange : initialPriceRange;
     return (
         <div>
             <div>

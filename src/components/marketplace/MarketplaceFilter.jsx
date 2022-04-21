@@ -3,8 +3,8 @@ import Slider from '@material-ui/core/Slider';
 
 const MarketplaceFilter = ({ initialPriceRange, changeOption, changePrice }) => {
 
-    const [priceRange, setPriceRange] =  useState([null, null]);
-  
+    const [priceRange, setPriceRange] = useState([null, null]);
+
     const priceRangeSelector = (e, newPrice) => {
         setPriceRange(newPrice);
         changePrice(newPrice);
@@ -13,7 +13,7 @@ const MarketplaceFilter = ({ initialPriceRange, changeOption, changePrice }) => 
         const data = e.target.dataset;
         changeOption(data.category, data.option, e.target.checked);
     }
-    const defaultValue = priceRange[0] ? priceRange : initialPriceRange;
+    const defaultValue = priceRange[0] !== null ? priceRange : initialPriceRange;
 
     return (
         <div>
